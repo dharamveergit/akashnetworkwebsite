@@ -4,7 +4,7 @@ const className = clsx(
   // Base prose styles
   "prose prose-p:my-6  md:prose-p:my-10 md:prose-p:my-8",
   "max-w-full",
-  "text-foreground prose-headings:text-[#080808] prose-headings:font-normal prose-headings:mb-2",
+  "text-foreground prose-headings:text-[#080808] prose-headings:font-normal prose-headings:mb-4",
 
   // Headings
   "prose-h1:text-foreground",
