@@ -65,7 +65,7 @@ const { Content } = await post.render();
   relatedArticles={relatedArticles}
 >
   <div class="grid grid-cols-12 md:gap-x-10 lg:gap-x-16">
-    <div class="col-span-12 md:col-span-9">
+    <div class="col-span-12 md:col-span-8">
       <div class="mt-4 hidden items-center gap-x-4 md:mt-0 md:flex">
         <p class="text-xs font-medium leading-none text-cardGray md:text-base">
           by {`${post.data.contributors[0]}`}
@@ -119,8 +119,8 @@ const { Content } = await post.render();
     </div>
   </div>
 
-  <div class="mt-4 grid grid-cols-12 md:gap-x-10 lg:gap-x-16">
-    <article class="col-span-12 md:col-span-9">
+  <div class="mt-4 grid grid-cols-12 md:gap-x-10">
+    <article class="col-span-12 md:col-span-8">
       <div>
         <Image
           src={post.data.bannerImage}
@@ -150,7 +150,7 @@ const { Content } = await post.render();
     </article>
 
     <aside
-      class="sticky top-28 col-span-3 hidden h-screen space-y-[56px] md:block"
+      class="sticky top-28 col-span-4 hidden h-screen space-y-[56px] md:block"
     >
       <div>
         <p class="font-bold leading-none text-foreground">Explore Topics</p>

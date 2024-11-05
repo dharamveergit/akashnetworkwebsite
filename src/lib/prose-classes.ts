@@ -13,7 +13,7 @@ const className = clsx(
   "prose-h2:text-xl",
 
   "md:prose-h2:text-2xl",
-  "lg:prose-h2:text-2lg",
+  "lg:prose-h2:text-3xl",
   "prose-h3:mt-10",
   "prose-h3:text-base",
 
