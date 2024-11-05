@@ -424,10 +424,10 @@ export const Tables = ({
               <th className="w-[26%] px-2 text-left text-sm  font-medium tracking-normal  text-linkText ">
                 Chipset
               </th>
-              <th className="w-[26%] px-2 text-left text-sm  font-medium tracking-normal text-linkText xl:pl-8">
+              <th className="w-[26%] px-2 text-left text-sm  font-medium tracking-normal text-linkText xl:pl-6">
                 Availability
               </th>
-              <th className="w-[26%] whitespace-nowrap pr-2 text-left  text-sm font-medium tracking-normal text-linkText xl:pl-8 ">
+              <th className="w-[26%] whitespace-nowrap px-2 text-left  text-sm font-medium tracking-normal text-linkText xl:pl-6 ">
                 Price (USD per hour)
               </th>
               <th className=""></th>
@@ -496,13 +496,13 @@ export const Tables = ({
                         </div>
                       </div>
                     </td>
-                    <td className="w-[27.2%] border-y px-2 xl:px-8">
+                    <td className="w-[27.2%] border-y px-2 xl:px-6">
                       <AvailabilityBar
                         available={model?.availability?.available}
                         total={model?.availability?.total}
                       />
                     </td>
-                    <td className="w-[27.2%] border-y px-2 xl:px-8">
+                    <td className="w-[33%] border-y px-2 xl:px-6">
                       <div className="flex justify-between border-b pb-1 text-lg">
                         <span className="font-semibold">Average price:</span>
                         <span className="font-semibold">
@@ -563,13 +563,13 @@ export const Tables = ({
                         </HoverCardContent>
                       </HoverCard>
                     </td>
-                    <td className="rounded-r-lg border-y border-r px-2 text-center xl:px-8">
+                    <td className="rounded-r-lg border-y border-r px-2 text-center xl:px-6">
                       <a
                         id={`${model?.model}-(gpu-rent)`}
                         // href={`https://console.akash.network/rent-gpu?vendor=${model?.vendor}&gpu=${model?.model}&interface=${model?.interface}&vram=${model?.ram}`}
                         href="https://console.akash.network/new-deployment"
                         target="_blank"
-                        className="inline-flex gap-1.5 rounded-md bg-foreground px-4 py-2 text-white hover:bg-primary dark:text-black dark:hover:text-inherit"
+                        className="inline-flex gap-1.5 whitespace-nowrap rounded-md bg-foreground px-4 py-2 text-white hover:bg-primary dark:text-black dark:hover:text-inherit"
                       >
                         <p className="text-sm font-medium text-inherit">
                           Rent Now
