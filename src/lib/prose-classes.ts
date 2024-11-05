@@ -2,17 +2,17 @@ import clsx from "clsx";
 
 const className = clsx(
   // Base prose styles
-  "prose",
+  "prose prose-p:my-6  md:prose-p:my-10 ",
   "max-w-full",
   "text-foreground prose-headings:text-[#080808]",
 
   // Headings
   "prose-h1:text-foreground",
-  "prose-h2:mt-14",
-  "prose-h2:mb-10",
+  "prose-h2:mt-10 md:prose-h2:mt-12",
+  "prose-h2:mb-2",
   "prose-h2:font-normal",
   "prose-h2:text-xl",
-  "md:prose-h2:mt-20",
+
   "md:prose-h2:text-2xl",
   "lg:prose-h2:text-2lg",
   "prose-h3:mt-10",
@@ -33,9 +33,9 @@ const className = clsx(
   "prose-ul:mt-5",
 
   // Paragraphs and Links
-  "prose-p:mt-3",
+
   "prose-p:text-sm",
-  "md:prose-p:mt-5",
+
   "md:prose-p:text-base",
   "lg:prose-p:text-lg",
   "prose-a:text-primary",
@@ -60,7 +60,7 @@ const className = clsx(
   "md:prose-td:text-sm",
 
   // Images
-  "prose-img:my-5 prose-img:mx-auto prose-img:max-w-[70rem] prose-img:w-full",
+  "prose-img:my-6 md:prose-img:my-14 prose-img:mx-auto prose-img:max-w-[70rem] prose-img:w-full",
   "[&_.image]:max-w-[70rem] [&_.image]:mx-auto",
 
   // Horizontal rules
