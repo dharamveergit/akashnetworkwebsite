@@ -4,13 +4,13 @@ const className = clsx(
   // Base prose styles
   "prose",
   "max-w-full",
-  "text-foreground",
+  "text-foreground prose-headings:text-[#080808]",
 
   // Headings
   "prose-h1:text-foreground",
   "prose-h2:mt-14",
-  "prose-h2:mb-0",
-  "prose-h2:font-semibold",
+  "prose-h2:mb-10",
+  "prose-h2:font-normal",
   "prose-h2:text-xl",
   "md:prose-h2:mt-20",
   "md:prose-h2:text-2xl",
@@ -60,7 +60,7 @@ const className = clsx(
   "md:prose-td:text-sm",
 
   // Images
-  "prose-img:my-0 prose-img:mx-auto prose-img:max-w-[70rem] prose-img:w-full",
+  "prose-img:my-5 prose-img:mx-auto prose-img:max-w-[70rem] prose-img:w-full",
   "[&_.image]:max-w-[70rem] [&_.image]:mx-auto",
 
   // Horizontal rules
