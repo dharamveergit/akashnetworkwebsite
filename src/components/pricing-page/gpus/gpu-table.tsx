@@ -450,13 +450,13 @@ export const Tables = ({
                       </div>
                     </td>
 
-                    <td className=" w-[27.2%] pr-8">
+                    <td className=" w-[27.2%] pr-6">
                       <div className=" flex items-center justify-between">
                         <Skeleton className="h-5 w-20" />
                         <Skeleton className="h-5 w-20" />
                       </div>
                     </td>
-                    <td className="w-[27.2%] pl-4">
+                    <td className="w-[33%] pl-4">
                       <div className="flex justify-between">
                         <Skeleton className="h-6 w-20" />
                         <Skeleton className="h-6 w-20" />
@@ -467,7 +467,7 @@ export const Tables = ({
                         <Skeleton className="h-3 w-3"></Skeleton>
                       </div>
                     </td>
-                    <td className="rounded-r-lg border-r px-8 text-center">
+                    <td className="rounded-r-lg border-r px-6 text-center">
                       <Skeleton className="mx-auto h-8 w-24" />
                     </td>
                   </tr>
@@ -502,7 +502,7 @@ export const Tables = ({
                         total={model?.availability?.total}
                       />
                     </td>
-                    <td className="w-[33%] border-y px-2 xl:px-6">
+                    <td className="w-[27%] border-y px-2 lg:w-[33%] xl:w-[40%] xl:px-6">
                       <div className="flex justify-between border-b pb-1 text-sm lg:text-lg">
                         <span className=" font-semibold ">Average price:</span>
                         <span className="font-semibold">
@@ -571,7 +571,7 @@ export const Tables = ({
                         target="_blank"
                         className="inline-flex gap-1.5 whitespace-nowrap rounded-md bg-foreground px-4 py-2 text-white hover:bg-primary dark:text-black dark:hover:text-inherit md:px-2 lg:px-4"
                       >
-                        <p className="text-sm font-medium text-inherit">
+                        <p className="text-xs font-medium text-inherit lg:text-sm">
                           Rent Now
                         </p>
                         <ArrowUpRightIcon className="w-[15px]" />
