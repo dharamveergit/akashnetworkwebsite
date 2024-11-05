@@ -8,7 +8,7 @@ const className = clsx(
 
   // Headings
   "prose-h1:text-foreground",
-  "prose-h2:mt-10 md:prose-h2:mt-12",
+  "prose-h2:mt-12",
   "prose-h2:mb-2",
   "prose-h2:font-normal",
   "prose-h2:text-xl",
