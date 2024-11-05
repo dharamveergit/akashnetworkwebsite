@@ -2,14 +2,13 @@ import clsx from "clsx";
 
 const className = clsx(
   // Base prose styles
-  "prose prose-p:my-6  md:prose-p:my-10 ",
+  "prose prose-p:my-6  md:prose-p:my-10 md:prose-p:my-8",
   "max-w-full",
-  "text-foreground prose-headings:text-[#080808]",
+  "text-foreground prose-headings:text-[#080808] prose-headings:font-normal prose-headings:mb-2",
 
   // Headings
   "prose-h1:text-foreground",
   "prose-h2:mt-12",
-  "prose-h2:mb-2",
   "prose-h2:font-normal",
   "prose-h2:text-xl",
 
@@ -17,7 +16,7 @@ const className = clsx(
   "lg:prose-h2:text-2lg",
   "prose-h3:mt-10",
   "prose-h3:text-base",
-  "md:prose-h3:mt-16",
+
   "md:prose-h3:text-xl",
   "lg:prose-h3:text-2xl",
   "prose-h4:text-foreground",
@@ -27,17 +26,19 @@ const className = clsx(
   "lg:prose-h4:text-xl",
 
   // Lists
-  "prose-ol:mt-5",
+  "prose-ol:mt-8",
   "prose-li:mt-0",
   "prose-li:text-para",
-  "prose-ul:mt-5",
+  "md:prose-li:text-base",
+  "prose-li:text-sm",
+  "prose-ul:mt-8",
 
   // Paragraphs and Links
 
   "prose-p:text-sm",
 
-  "md:prose-p:text-base",
-  "lg:prose-p:text-lg",
+  "md:prose-p:text-sm",
+  "lg:prose-p:text-base",
   "prose-a:text-primary",
   "prose-a:no-underline",
   "hover:prose-a:text-primary/80",
