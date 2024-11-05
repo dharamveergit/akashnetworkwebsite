@@ -479,15 +479,15 @@ export const Tables = ({
                   >
                     <td className="w-[24%] rounded-l-lg border-y border-l text-base font-semibold xl:text-lg">
                       <div className="flex items-center gap-3">
-                        <div className="ml-6 rounded-md border p-[11px_5px]">
+                        <div className="ml-3 flex aspect-square w-10 items-center justify-center rounded-md border lg:ml-6">
                           <img
                             src="/logos/nvidia.png"
                             alt="nvidia"
                             className="h-4 w-6"
                           />
                         </div>
-                        <div className="">
-                          <p className="text-xl font-semibold capitalize text-foreground">
+                        <div className="flex-1">
+                          <p className="text-lg font-semibold capitalize text-foreground lg:text-xl">
                             {modifyModel(model?.model)}
                           </p>
                           <p className="text-sm font-medium text-[#71717A]">
@@ -503,8 +503,8 @@ export const Tables = ({
                       />
                     </td>
                     <td className="w-[33%] border-y px-2 xl:px-6">
-                      <div className="flex justify-between border-b pb-1 text-lg">
-                        <span className="font-semibold">Average price:</span>
+                      <div className="flex justify-between border-b pb-1 text-sm lg:text-lg">
+                        <span className=" font-semibold ">Average price:</span>
                         <span className="font-semibold">
                           {price(model?.price?.avg)}
                         </span>
@@ -569,7 +569,7 @@ export const Tables = ({
                         // href={`https://console.akash.network/rent-gpu?vendor=${model?.vendor}&gpu=${model?.model}&interface=${model?.interface}&vram=${model?.ram}`}
                         href="https://console.akash.network/new-deployment"
                         target="_blank"
-                        className="inline-flex gap-1.5 whitespace-nowrap rounded-md bg-foreground px-4 py-2 text-white hover:bg-primary dark:text-black dark:hover:text-inherit"
+                        className="inline-flex gap-1.5 whitespace-nowrap rounded-md bg-foreground px-4 py-2 text-white hover:bg-primary dark:text-black dark:hover:text-inherit md:px-2 lg:px-4"
                       >
                         <p className="text-sm font-medium text-inherit">
                           Rent Now
