@@ -19,7 +19,7 @@ const className = clsx(
 
   "md:prose-h3:text-xl",
   "lg:prose-h3:text-2xl",
-  "",
+
   "prose-h4:mt-8",
   "prose-h4:text-base",
   "md:prose-h4:text-lg",
@@ -29,6 +29,7 @@ const className = clsx(
   "prose-ol:mt-8",
   "prose-li:mt-0",
 
+  "lg:prose-li:text-lg",
   "md:prose-li:text-base",
   "prose-li:text-sm",
   "prose-ul:mt-8",
@@ -37,8 +38,8 @@ const className = clsx(
 
   "prose-p:text-sm",
 
-  "md:prose-p:text-sm",
-  "lg:prose-p:text-base",
+  "md:prose-p:text-base",
+  "lg:prose-p:text-lg",
   "prose-a:text-primary",
   "prose-a:no-underline",
   "hover:prose-a:text-primary/80",
