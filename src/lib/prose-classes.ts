@@ -2,12 +2,12 @@ import clsx from "clsx";
 
 const className = clsx(
   // Base prose styles
-  "prose prose-p:my-6  md:prose-p:my-10 md:prose-p:my-8",
+  "prose prose-p:my-6 text-darkText  md:prose-p:my-10 md:prose-p:my-8",
   "max-w-full",
-  "text-foreground prose-headings:text-[#080808] prose-headings:font-normal prose-headings:mb-4",
+  "text-foreground prose-p:text-darkText prose-headings:font-normal prose-headings:text-darkText prose-headings:mb-4",
 
   // Headings
-  "prose-h1:text-foreground",
+
   "prose-h2:mt-12",
   "prose-h2:font-normal",
   "prose-h2:text-xl",
@@ -19,7 +19,7 @@ const className = clsx(
 
   "md:prose-h3:text-xl",
   "lg:prose-h3:text-2xl",
-  "prose-h4:text-foreground",
+  "",
   "prose-h4:mt-8",
   "prose-h4:text-base",
   "md:prose-h4:text-lg",
@@ -28,7 +28,7 @@ const className = clsx(
   // Lists
   "prose-ol:mt-8",
   "prose-li:mt-0",
-  "prose-li:text-para",
+
   "md:prose-li:text-base",
   "prose-li:text-sm",
   "prose-ul:mt-8",
@@ -50,12 +50,12 @@ const className = clsx(
   "prose-thead:text-justify",
   "md:prose-thead:text-xs",
   "md:prose-thead:font-medium",
-  "prose-th:text-para",
+
   "md:prose-th:px-4",
   "prose-tr:border-defaultBorder",
   "prose-td:py-4",
   "prose-td:text-start",
-  "prose-td:text-para",
+
   "prose-td:px-2",
   "md:prose-td:px-4",
   "md:prose-td:text-sm",
