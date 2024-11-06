@@ -67,7 +67,7 @@ const { Content } = await post.render();
   <div class="grid grid-cols-12 md:gap-x-10 lg:gap-x-16">
     <div class="col-span-12 md:col-span-8">
       <div class="mt-4 hidden items-center gap-x-4 md:mt-0 md:flex">
-        <p class="text-xs font-medium leading-none text-cardGray md:text-base">
+        <p class="text-xs font-medium leading-none text-darkText md:text-base">
           by {`${post.data.contributors[0]}`}
         </p>
         <a
@@ -95,17 +95,17 @@ const { Content } = await post.render();
       </h1>
 
       <p
-        class="mt-6 hidden items-center text-xs font-medium text-para md:mt-4 md:inline-flex md:text-base"
+        class="mt-6 hidden items-center text-xs font-medium text-darkText md:mt-4 md:inline-flex md:text-base"
       >
         5 Min. Read
-        <span class="ml-2 text-xs text-para md:text-base">
+        <span class="ml-2 text-xs md:text-base">
           <FormattedDate date={post.data.pubDate} />
         </span>
       </p>
 
       <div class="mt-4 flex items-center gap-x-4 md:mt-0 md:hidden">
         <p
-          class="text-xs font-medium leading-none text-cardGray md:block md:text-base"
+          class="text-xs font-medium leading-none text-darkText md:block md:text-base"
         >
           by {`${post.data.contributors[0]}`}
         </p>
@@ -161,7 +161,7 @@ const { Content } = await post.render();
               .sort(() => Math.random() - 0.5)
               .map((tag: string) => (
                 <a
-                  class="inline-flex items-center rounded-full bg-badgeColor  px-3 py-1.5 text-xs font-medium text-iconText"
+                  class="inline-flex items-center rounded-full bg-badgeColor  px-3 py-1.5 text-xs font-medium text-darkText"
                   href={`/blog/${tag.toLowerCase()?.replaceAll(" ", "-")}/1`}
                 >
                   {tag}
@@ -182,7 +182,7 @@ const { Content } = await post.render();
                 return (
                   <a
                     href={`/blog/${post.slug}`}
-                    class="line-clamp-2 cursor-pointer  text-para hover:text-primary hover:no-underline"
+                    class="line-clamp-2 cursor-pointer  text-darkText hover:text-primary hover:no-underline"
                   >
                     {post.data.title}
                   </a>
@@ -285,7 +285,7 @@ const { Content } = await post.render();
                 return (
                   <a
                     href={`/blog/${post.slug}`}
-                    class="line-clamp-2 cursor-pointer  text-xs text-para hover:text-primary hover:no-underline"
+                    class="line-clamp-2 cursor-pointer  text-xs text-darkText hover:text-primary hover:no-underline"
                   >
                     {post.data.title}
                   </a>
