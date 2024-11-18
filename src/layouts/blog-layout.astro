@@ -26,6 +26,7 @@ const {
 } = Astro.props;
 
 const isProd = import.meta.env.PROD;
+const slug = Astro.url.pathname.split("/")[2];
 ---
 
 <BaseLayout title={title} description={description} image={image}>
@@ -45,7 +46,13 @@ const isProd = import.meta.env.PROD;
     >
       {
         relatedArticles
-          .sort(() => Math.random() - 0.5)
+          ?.sort((a, b) => {
+            const dateA = new Date(a.data.pubDate);
+            const dateB = new Date(b.data.pubDate);
+
+            return dateB.getTime() - dateA.getTime();
+          })
+          ?.filter((post) => !post.data.archive && post.slug !== slug)
           .slice(0, 3)
           .map((post: BlogPost) => {
             return (
