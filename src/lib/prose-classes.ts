@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 const className = clsx(
   // Base prose styles
-  "prose prose-p:my-6 text-darkText  md:prose-p:my-10 md:prose-p:my-8",
+  "prose prose-blog prose-p:my-6 text-darkText  md:prose-p:my-10 md:prose-p:my-8",
   "max-w-full",
   "text-foreground prose-p:text-darkText prose-headings:font-normal prose-headings:text-darkText prose-headings:mb-4",
 
