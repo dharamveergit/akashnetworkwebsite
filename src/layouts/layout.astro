@@ -30,7 +30,6 @@ const pathname = Astro.url.pathname;
         <a
           id="advert-to-gpus"
           href={advert?.link}
-          href={advert?.link}
           target={
             advert?.link.startsWith("/") || advert?.link.startsWith("#")
               ? "_self"
@@ -38,7 +37,6 @@ const pathname = Astro.url.pathname;
           }
         >
           <p class="text-center text-sm font-semibold text-white underline">
-            {advert?.title}
             {advert?.title}
           </p>
         </a>
