@@ -5,112 +5,75 @@ disableTitle: true
 pubDate: "2020-01-19"
 ---
 
+import PointerSection from "../../../components/community-pages/pointer-section.astro";
+import Responsibility from "../../../components/community-pages/responsibility.astro";
 import CommunityHero from "../../../components/mdx-cards/community-hero.astro";
-import ResponsibilityCard from "../../../components/responsibility-card/responsibility-card.astro";
 
 <CommunityHero
   subTitle="Akash Validators:"
-  title1="Help validate the Akash Supercloud"
-  title2="and earn rewards"
+  title="Help validate the <br class=' md:hidden'/> Akash Supercloud <br /> and earn rewards"
   description="An Akash Network Validators plays a pivotal role in the decentralized cloud computing platform, Akash Network. Operating on blockchain technology, Akash Network establishes a marketplace for cloud resources, enabling the peer-to-peer exchange of computing power. Validators are instrumental in upholding the network’s security, contributing to the validation and consensus process."
   buttonLabel="Become an Akash Validators"
   buttonLink="https://akashnet.typeform.com/to/kH2gpXOL?typeform-source=akash.network"
 />
 
-<h1 class="text-center">Responsibilities</h1>
+<Responsibility/>
 
-<p class="m-auto max-w-3xl pt-6 text-center text-sm lg:text-lg">The primary responsibilities of an Akash Network Validators encompass:</p>
-<div
-  class="flex gap-5 overflow-x-scroll lg:overflow-auto"
->
-  <ResponsibilityCard
-    title="Block Validation"
-    description="Validators actively validate transactions and create new blocks as part of Akash Network's robust, secure, and attack-resistant consensus algorithm."
-  />
-  <ResponsibilityCard
-    title="Network Security"
-    description="Validators are central to maintaining the overall security of the network, preventing malicious activities like double-spending and ensuring blockchain integrity."
-  />
-  <ResponsibilityCard
-    title="Staking"
-    description="Validators must stake a specific amount of $AKT (Akash Network's native cryptocurrency) to join the consensus process. Staking incentivizes honesty by aligning validators' interests with the network's success."
-  />
-  <ResponsibilityCard
-    title="Governance"
-    description="Validators may participate in the governance process, contributing to decisions affecting the protocol and the network’s development trajectory."
-  />
-  <ResponsibilityCard
-    title="Reliability"
-    description="Validators ensure the network's reliability and availability by managing stable, well-connected nodes that keep it operational."
-  />
-</div>
+<div className="mt-20 md:mt-40"/>
+<PointerSection 
+  reverse={true}
+  title="Node Infrastructure"
+  description="To become a validator on Akash Network, entities must set up and maintain a node, which typically includes:"
+  type="sublist"
+  image="/images/node-infrastructure.png"
+  items={[
+   {
+    title: "Server Infrastructure:",
+    items: [
+      "Validators operate robust servers capable of handling the computational demands of block validation.",
+      "The quality and reliability of server infrastructure significantly influence the overall performance of Akash Network.",
+    ]
+   },
+   {
+    title: "Software:",
+    items: [
+      "Validators run specialized software enabling them to participate in the consensus process.",
+      "Regular updates and maintenance are essential to keep the software secure and up to date.",
+    ]
+   },
+   {
+    title: "Network Connectivity:",
+    items: [
+      "A stable and high-speed internet connection is crucial for maintaining a reliable node.",
+      "Validators ensure their nodes are well-connected to the Akash Network.",
+    ]
+   }
 
-<div className="mx-auto mb-[80px] flex max-w-[1155px] flex-col gap-[56px] text-base md:mb-[100px] md:flex-row md:gap-[68px] xl:mb-[120px]">
-  <div className="flex-1">
-    <h2 className="m-0">Node Infrastructure</h2>
-    <ul className="m-0 list-none pl-5">
-      <li>
-        <strong>Server Infrastructure:</strong>
-        <ul className="list-disc pl-5">
-          <li>Validators operate robust servers capable of handling the computational demands of block validation.</li>
-          <li>The quality and reliability of server infrastructure significantly influence the overall performance of Akash Network.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Software:</strong>
-        <ul className="list-disc pl-5">
-          <li>Validators run specialized software enabling them to participate in the consensus process.</li>
-          <li>Regular updates and maintenance are essential to keep the software secure and up to date.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Network Connectivity:</strong>
-        <ul className="list-disc pl-5">
-          <li>A stable and high-speed internet connection is crucial for maintaining a reliable node.</li>
-          <li>Validators ensure their nodes are well-connected to the Akash Network.</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-  <div className="relative order-first flex-1">
-    <img
-      src="/images/node-infrastructure.png"
-      alt="Node Infrastructure"
-      className="relative z-10 m-0 max-w-full rounded-md shadow-[12px_12px_#E4E4E4]"
-    />
-  </div>
-</div>
-
-
-<div className="mx-auto flex max-w-[1155px] flex-col gap-0 text-base md:flex-row md:gap-[56px]">
-  <div className="flex-1">
-    <h2 className="m-0">Rewards and Penalties</h2>
-    <ul className="m-0">
-      <li>
-        Validators are rewarded for their participation in block validation and maintaining a secure network. Rewards are often in the form of $AKT, influenced by factors like the validator's stake and performance.
-      </li>
-      <li>
-        Validators may face penalties for malicious behavior or network disruptions. Penalties discourage harmful activities, promoting validators to act in the network's best interest.
-      </li>
-    </ul>
-  </div>
-
-  <div className="relative order-first flex-1 md:order-last">
-    <img
-      src="/images/rewards-penalties.png"
-      alt="Rewards and Penalties Graphic"
-      className="relative z-10 m-0 max-w-full rounded-md shadow-[12px_12px_#E4E4E4]"
-    />
-  </div>
-</div>
-<div class="mt-[80px] md:mt-[100px]"></div>
-<CommunityHero
-  subTitle=""
-  title1="Wrap-Up"
-  title2=""
-  description="In conclusion, an Akash Network Validator is a key participant in the decentralized cloud computing ecosystem, contributing to the security, reliability, and governance of the network. Validators play a vital role in ensuring the proper functioning of Akash Network and are rewarded with $AKT for their efforts in maintaining a robust and decentralized infrastructure."
-  buttonLabel="Become an Akash Validator"
-  buttonLink="https://akashnet.typeform.com/to/PXpRWgfD?typeform-source=akash.network"
-
+  ]}
 />
+
+<div className="mt-20 md:mt-40"/>
+
+<PointerSection 
+  title="Rewards and Penalties"
+  items={[
+    {title: "Validators are rewarded for their participation in block validation and maintaining a secure network. Rewards are often in the form of $AKT, influenced by factors like the validator's stake and performance."},
+    {title: "On the other hand, validators may face penalties for malicious behavior or network disruptions. Penalties discourage harmful activities, promoting validators to act in the network’s best interest."},
+  ]}
+  type="paragraph"
+  image="/images/rewards-penalties.png"
+/>
+
+
+<div className="mt-20 md:mt-40"/>
+
+import ButtonLink from "../../../components/ui/button-link.astro";
+
+<div className="flex flex-col  not-prose  justify-center items-center">
+  <h2 className="text-3xl font-semibold text-center">Wrap-Up</h2>
+  <p className="text-center text-sm md:text-base mt-4">In conclusion, an Akash Network Validator is a key participant in the decentralized cloud computing ecosystem, contributing to the security, reliability, and governance of the network. Validators play a vital role in ensuring the proper functioning of Akash Network and are rewarded with $AKT for their efforts in maintaining a robust and decentralized infrastructure.</p>
+  <ButtonLink arrow className="mt-10 " link="https://akashnet.typeform.com/to/PXpRWgfD?typeform-source=akash.network" variant="secondary" size="lg" >
+   Become an Akash Validator
+  </ButtonLink>
+</div>
+

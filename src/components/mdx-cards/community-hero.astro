@@ -1,14 +1,7 @@
 ---
 import ButtonLink from "../ui/button-link.astro";
-const {
-  subTitle,
-  title1,
-  title2,
-  description,
-  buttonLabel,
-  buttonLink,
-  darkImage,
-} = Astro.props;
+const { subTitle, title, description, buttonLabel, buttonLink, darkImage } =
+  Astro.props;
 ---
 
 <div
@@ -20,11 +13,11 @@ const {
         <p class="mb-2 text-base font-medium lg:text-xl">{subTitle}</p>
       )
     }
-    <h1 class="text-3xl !font-semibold md:text-4xl md:leading-snug lg:text-5xl">
-      {title1}
-      <br />
-      {title2}
-    </h1>
+    <h1
+      class="text-3xl !font-semibold md:text-4xl md:leading-snug lg:text-5xl"
+      set:html={title}
+    />
+
     {
       description && (
         <p class="mx-auto max-w-3xl pt-6  lg:text-lg">{description}</p>
