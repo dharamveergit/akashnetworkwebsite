@@ -1,24 +1,35 @@
 ---
 import ButtonLink from "../ui/button-link.astro";
-const { subTitle, title1, title2, description, buttonLabel, buttonLink, darkImage } =
-  Astro.props;
+const {
+  subTitle,
+  title1,
+  title2,
+  description,
+  buttonLabel,
+  buttonLink,
+  darkImage,
+} = Astro.props;
 ---
 
 <div
-  class="text-center not-prose flex items-center justify-between gap-x-10 gap-y-6 flex-col mb-[80px] md:mb-[100px] xl:mb-[120px]"
+  class="not-prose mb-[80px] flex flex-col items-center justify-between gap-x-10 gap-y-6 text-center md:mb-[100px] xl:mb-[120px]"
 >
-  <div class="gap flex w-full flex-1 flex-col">
-    <p class="text-base lg:text-xl">
-      {subTitle}
-    </p>
-    <h1 class="text-3xl md:text-4xl lg:text-5xl leading-snug">
+  <div class="flex w-full flex-1 flex-col">
+    {
+      subTitle && (
+        <p class="mb-2 text-base font-medium lg:text-xl">{subTitle}</p>
+      )
+    }
+    <h1 class="text-3xl !font-semibold md:text-4xl md:leading-snug lg:text-5xl">
       {title1}
-      <br>
+      <br />
       {title2}
     </h1>
-    <p class="text-sm lg:text-lg pt-6 max-w-3xl m-auto">
-      {description}
-    </p>
+    {
+      description && (
+        <p class="mx-auto max-w-3xl pt-6  lg:text-lg">{description}</p>
+      )
+    }
 
     <ButtonLink link={buttonLink} variant="secondary" size="lg">
       <svg
@@ -43,5 +54,4 @@ const { subTitle, title1, title2, description, buttonLabel, buttonLink, darkImag
       {buttonLabel}
     </ButtonLink>
   </div>
-
 </div>
