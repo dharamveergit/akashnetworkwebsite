@@ -3,13 +3,23 @@ import { nav } from "@/components/development-pages/nav-config";
 import TopMargin from "@/components/ui/top-margin.astro";
 import Layout from "@/layouts/layout.astro";
 import { proseClasses } from "@/lib/prose-classes";
+import type { MarkdownHeading } from "astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import clsx from "clsx";
+
+interface NavItem {
+  link: string;
+  subItems?: {
+    label: string;
+    link: string;
+    enabled: boolean;
+  }[];
+}
 
 export async function getStaticPaths() {
   const pages = await getCollection("Development_Page");
 
-  return pages.map((page) => ({
+  return pages.map((page: CollectionEntry<"Development_Page">) => ({
     params: { slug: page.slug },
     props: page,
   }));
@@ -23,13 +33,13 @@ console.log(page);
 const { Content, headings } = await page.render();
 
 const akashInsidersIndex = nav.findIndex(
-  (item: any) => item.link === `/development/${page.slug}/`
+  (item: NavItem) => item.link === `/development/${page.slug}/`
 );
 
 if (akashInsidersIndex !== -1) {
   const akashInsidersSubItems = headings
-    .filter((heading) => heading.depth <= 3)
-    .map((heading) => ({
+    .filter((heading: MarkdownHeading) => heading.depth <= 3)
+    .map((heading: MarkdownHeading) => ({
       label: heading.text,
       link: `#${heading.slug}`,
       enabled: true,
@@ -45,9 +55,7 @@ if (akashInsidersIndex !== -1) {
   image="/meta-images/development.png"
 >
   <TopMargin>
-    <div
-      class="text-padding mx-auto w-full max-w-[1150px] space-y-10 px-4 md:px-[4rem] lg:px-[6rem] xl:px-[8rem] 2xl:p-0"
-    >
+    <div class="text-padding container-reader w-full space-y-10">
       <div class="mt-10 md:mt-0">
         <h1
           id="overview"
