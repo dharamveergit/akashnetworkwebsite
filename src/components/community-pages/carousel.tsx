@@ -35,14 +35,14 @@ const Carousel = () => {
         className="w-full"
       >
         {images.map((src, index) => (
-          <SwiperSlide key={index} className="!w-auto">
+          <SwiperSlide key={index} className="!w-auto ">
             <div className="mx-3  md:mx-5 lg:mx-[28px]">
               <img
                 src={src}
                 alt={`Image ${index + 1}`}
                 height={380}
                 width={260}
-                className=" aspect-auto max-h-[14rem] w-full md:h-full md:max-h-[unset]  md:object-cover"
+                className=" aspect-auto !max-h-[14rem] w-full md:h-full md:!max-h-[unset]  md:object-cover"
               />
             </div>
           </SwiperSlide>

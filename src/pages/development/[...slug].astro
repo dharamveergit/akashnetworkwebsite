@@ -23,7 +23,7 @@ console.log(page);
 const { Content, headings } = await page.render();
 
 const akashInsidersIndex = nav.findIndex(
-  (item: any) => item.link === `/development/${page.slug}/`,
+  (item: any) => item.link === `/development/${page.slug}/`
 );
 
 if (akashInsidersIndex !== -1) {
@@ -40,19 +40,21 @@ if (akashInsidersIndex !== -1) {
 ---
 
 <Layout
-  title="Developer Hub - Build on Akash Network"
-  description="Access resources, tools, and documentation for developers interested in building on the Akash Network. Explore our APIs, SDKs, and developer-friendly features."
+  title={`${page.data.title} - Developer Hub`}
+  description={page.data.description}
   image="/meta-images/development.png"
 >
   <TopMargin>
-    <div class="space-y-10 max-w-[1150px] w-full mx-auto px-4 2xl:p-0 xl:px-[8rem] lg:px-[6rem] md:px-[4rem] text-padding">
+    <div
+      class="text-padding mx-auto w-full max-w-[1150px] space-y-10 px-4 md:px-[4rem] lg:px-[6rem] xl:px-[8rem] 2xl:p-0"
+    >
       <div class="mt-10 md:mt-0">
         <h1
           id="overview"
           class={clsx(
             "text-3xl md:text-4xl lg:text-5xl",
             page?.data?.centeredHeader && "text-center",
-            page?.data?.hideHeader && "hidden",
+            page?.data?.hideHeader && "hidden"
           )}
         >
           {page.data.title}
