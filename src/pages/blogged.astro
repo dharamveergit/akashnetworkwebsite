@@ -1,0 +1,14 @@
+---
+import Blogs from "@/components/blogtest/Blogs";
+import Layout from "@/layouts/layout.astro";
+import { getCollection } from "astro:content";
+
+const blogs = await getCollection("Blog");
+---
+
+<Layout
+  title="Akash Network Blog - Insights into Decentralized Cloud Computing"
+  description="Stay updated with the latest trends, news, and insights in decentralized cloud computing. Explore thought leadership, technical deep-dives, and community highlights."
+>
+  <Blogs blogs={blogs} client:load />
+</Layout>
