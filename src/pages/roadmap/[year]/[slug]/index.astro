@@ -73,6 +73,7 @@ const parsedAuthors = parseAuthors(roadmap.data.author)
 const estimatedCompletion =
   roadmap.data["estimated-completion"]?.toLocaleDateString();
 const completionDate = roadmap.data["completed"]?.toLocaleDateString();
+const nextRoadmapYear = getRoadmapYear(nextRoadmap);
 ---
 
 <Layout title={roadmap.data.title}>
@@ -181,7 +182,7 @@ const completionDate = roadmap.data["completed"]?.toLocaleDateString();
           </p>
           <RoadmapCard
             roadmap={nextRoadmap}
-            year={year}
+            year={nextRoadmapYear}
             className="!ml-0 w-full"
           />
         </div>
