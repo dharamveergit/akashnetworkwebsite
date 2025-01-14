@@ -175,7 +175,7 @@ const Panel = ({
                                 key={i}
                                 href={
                                   subItem.link === "roadmap"
-                                    ? `/roadmap/${latestRoadmapYear}`
+                                    ? `/roadmap/year/${latestRoadmapYear}`
                                     : subItem.link
                                 }
                                 target={

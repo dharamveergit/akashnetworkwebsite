@@ -4,7 +4,6 @@ import ButtonLink from "@/components/ui/button-link.astro";
 import TopMargin from "@/components/ui/top-margin.astro";
 import Layout from "@/layouts/layout.astro";
 import { docsProseClasses } from "@/lib/docs-prose-classes";
-import { getYearToUse } from "@/utils/redirects";
 import {
   getRelevantDate,
   getRoadmapYear,
@@ -16,13 +15,11 @@ export async function getStaticPaths() {
   const roadmaps = await getCollection("aeps");
   const sortedRoadmaps = sortRoadmapsByDate(roadmaps);
   return sortedRoadmaps.map((roadmap) => {
-    const year = getRoadmapYear(roadmap);
     const nextIndex = sortedRoadmaps.findIndex((r) => r.id === roadmap.id);
     const nextRoadmap = sortedRoadmaps[nextIndex + 1];
 
     return {
       params: {
-        year,
         slug: roadmap.slug?.split("/")[0],
       },
       props: { roadmap, nextRoadmap },
@@ -32,7 +29,7 @@ export async function getStaticPaths() {
 
 const { roadmap, nextRoadmap } = Astro.props;
 const { Content } = await roadmap.render();
-const year = Astro.params.year;
+const year = getRoadmapYear(roadmap);
 
 const quarter = Math.floor(getRelevantDate(roadmap).getMonth() / 3) + 1;
 
@@ -74,22 +71,19 @@ const parsedAuthors = parseAuthors(roadmap.data.author)
 const estimatedCompletion =
   roadmap.data["estimated-completion"]?.toLocaleDateString();
 const completionDate = roadmap.data["completed"]?.toLocaleDateString();
-const nextRoadmapYear = nextRoadmap
-  ? getRoadmapYear(nextRoadmap)
-  : getYearToUse();
 ---
 
 <Layout title={roadmap.data.title}>
   <TopMargin readable className="flex flex-col gap-10 md:gap-16">
     <div class="flex items-center gap-3 text-para">
-      <a href={`/roadmap/${year}`} class="hidden md:block"
+      <a href={`/roadmap/year/${year}`} class="hidden md:block"
         >Akash Network Roadmap</a
       >
-      <a href={`/roadmap/${year}`} class="md:hidden"> Roadmap</a>
+      <a href={`/roadmap/year/${year}`} class="md:hidden"> Roadmap</a>
       <ChevronRight size={16} />
-      <a href={`/roadmap/${year}`}>{year}</a>
+      <a href={`/roadmap/year/${year}`}>{year}</a>
       <ChevronRight size={16} />
-      <a href={`/roadmap/${year}`}>Q{quarter}</a>
+      <a href={`/roadmap/year/${year}`}>Q{quarter}</a>
       <ChevronRight size={16} />
       <p class="text-foreground">{roadmap.slug.split("/")[0]}</p>
     </div>
@@ -183,11 +177,7 @@ const nextRoadmapYear = nextRoadmap
           <p class="text-center text-sm font-medium text-foreground md:text-left">
             View next aep
           </p>
-          <RoadmapCard
-            roadmap={nextRoadmap}
-            year={nextRoadmapYear}
-            className="!ml-0 w-full"
-          />
+          <RoadmapCard roadmap={nextRoadmap} className="!ml-0 w-full" />
         </div>
       )
     }

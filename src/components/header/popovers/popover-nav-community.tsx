@@ -67,7 +67,7 @@ const PopOverSmall = ({
                         <a
                           href={
                             item.link === "roadmap"
-                              ? `/roadmap/${latestRoadmapYear}`
+                              ? `/roadmap/year/${latestRoadmapYear}`
                               : item.link
                           }
                           target={

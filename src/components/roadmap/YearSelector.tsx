@@ -73,7 +73,7 @@ export default function YearSelector({
           {years?.map((y, index) => (
             <SwiperSlide key={y} style={{ width: "auto" }}>
               <a
-                href={`/roadmap/${y}`}
+                href={`/roadmap/year/${y}`}
                 onClick={(e) => handleYearClick(e, index)}
                 className={clsx(
                   "block rounded-full px-3 py-1 text-lg font-medium transition-colors duration-200 hover:bg-badgeColor hover:text-para",
