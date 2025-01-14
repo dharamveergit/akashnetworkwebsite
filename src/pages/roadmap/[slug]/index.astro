@@ -76,14 +76,14 @@ const completionDate = roadmap.data["completed"]?.toLocaleDateString();
 <Layout title={roadmap.data.title}>
   <TopMargin readable className="flex flex-col gap-10 md:gap-16">
     <div class="flex items-center gap-3 text-para">
-      <a href={`/roadmap/year/${year}`} class="hidden md:block"
+      <a href={`/roadmap/${year}`} class="hidden md:block"
         >Akash Network Roadmap</a
       >
-      <a href={`/roadmap/year/${year}`} class="md:hidden"> Roadmap</a>
+      <a href={`/roadmap/${year}`} class="md:hidden"> Roadmap</a>
       <ChevronRight size={16} />
-      <a href={`/roadmap/year/${year}`}>{year}</a>
+      <a href={`/roadmap/${year}`}>{year}</a>
       <ChevronRight size={16} />
-      <a href={`/roadmap/year/${year}`}>Q{quarter}</a>
+      <a href={`/roadmap/${year}`}>Q{quarter}</a>
       <ChevronRight size={16} />
       <p class="text-foreground">{roadmap.slug.split("/")[0]}</p>
     </div>
