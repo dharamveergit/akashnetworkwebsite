@@ -4,6 +4,7 @@ import ButtonLink from "@/components/ui/button-link.astro";
 import TopMargin from "@/components/ui/top-margin.astro";
 import Layout from "@/layouts/layout.astro";
 import { docsProseClasses } from "@/lib/docs-prose-classes";
+import { getYearToUse } from "@/utils/redirects";
 import {
   getRelevantDate,
   getRoadmapYear,
@@ -73,7 +74,9 @@ const parsedAuthors = parseAuthors(roadmap.data.author)
 const estimatedCompletion =
   roadmap.data["estimated-completion"]?.toLocaleDateString();
 const completionDate = roadmap.data["completed"]?.toLocaleDateString();
-const nextRoadmapYear = getRoadmapYear(nextRoadmap);
+const nextRoadmapYear = nextRoadmap
+  ? getRoadmapYear(nextRoadmap)
+  : getYearToUse();
 ---
 
 <Layout title={roadmap.data.title}>
