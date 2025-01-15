@@ -15,7 +15,6 @@ const currentOffsetDateTime = new Date(
 ).getTime();
 
 const relevantCards = allCards.filter((curr: any) => {
-  console.log(curr.eventDate);
   if (curr.tbd && curr.eventDate.getFullYear() === new Date().getFullYear()) {
     return true;
   }
