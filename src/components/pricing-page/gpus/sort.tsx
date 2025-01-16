@@ -18,19 +18,16 @@ type ModelPriority = {
 
 export const onTop = (res?: Gpus): Gpus["models"] => {
   try {
-    // Guard clause for undefined input
     if (!res) {
       console.warn("Input is undefined, returning empty array");
       return [];
     }
 
-    // Guard clause for missing models
     if (!Array.isArray(res.models)) {
       console.warn("No models array found in input, returning empty array");
       return [];
     }
 
-    // Validate and clean models array
     const validModels = res.models.filter(
       (model): model is Gpus["models"][0] => {
         if (!model) {
