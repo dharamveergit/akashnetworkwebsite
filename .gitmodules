@@ -1,0 +1,6 @@
+[submodule "src/content/aeps"]
+    path = src/content/aeps
+    url = https://github.com/dharamveergit/AEP.git
+    branch = main
+    sparse-checkout = true
+    sparse-paths = spec
