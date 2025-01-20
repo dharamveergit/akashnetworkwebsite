@@ -1,9 +1,12 @@
 name: Update AEP Specs
 
 on:
-  schedule:
-    - cron: "0 */6 * * *" # Check every 6 hours
-  workflow_dispatch:
+  push:
+    branches:
+      - main # or master, depending on your default branch
+    paths:
+      - "spec/**" # Only trigger when changes are made in the spec directory
+  workflow_dispatch: # Keep manual trigger option
 
 jobs:
   update-specs:
