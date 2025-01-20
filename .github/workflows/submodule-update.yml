@@ -1,38 +1,41 @@
-name: Submodule Update Check
+name: Update AEP Specs
 
 on:
-  push:
-    paths:
-      - ".gitmodules"
-      - "src/content/aeps/**"
-  pull_request:
-    paths:
-      - ".gitmodules"
-      - "src/content/aeps/**"
   schedule:
     - cron: "0 */6 * * *" # Check every 6 hours
+  workflow_dispatch:
 
 jobs:
-  check-and-update:
+  update-specs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: "recursive"
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Git Submodule Update
+      - name: Clone and Update Specs
         run: |
-          git submodule update --remote --recursive
+          # Remove existing specs
+          rm -rf src/content/aeps
+
+          # Clone only the necessary files
+          git clone --depth 1 --filter=blob:none https://github.com/dharamveergit/AEP.git temp_aep
+
+          # Create target directory and copy only spec folder
+          mkdir -p src/content/aeps
+          cp -r temp_aep/spec/* src/content/aeps/
+          rm -rf temp_aep
+
+          # Check for changes
           if [[ -n $(git status --porcelain) ]]; then
-            echo "Changes detected in submodules"
+            echo "Changes detected in specs"
             git config --global user.name 'GitHub Action'
             git config --global user.email 'action@github.com'
-            git add .
-            git commit -m "chore: update submodules"
+            git add src/content/aeps
+            git commit -m "chore: update AEP specs"
             git push
           else
-            echo "No changes in submodules"
+            echo "No changes in specs"
           fi
 
       - name: Trigger Build
@@ -40,4 +43,4 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: submodule-update
+          event-type: spec-update
