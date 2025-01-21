@@ -19,7 +19,7 @@ jobs:
           rm -rf src/content/aeps
 
           # Clone only the necessary files
-          git clone --depth 1 --filter=blob:none https://github.com/dharamveergit/AEP.git temp_aep
+          git clone --depth 1 --filter=blob:none https://github.com/akash-network/AEP.git temp_aep
 
           # Create target directory and copy only spec folder
           mkdir -p src/content/aeps
