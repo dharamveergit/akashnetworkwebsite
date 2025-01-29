@@ -1,6 +1,6 @@
 ---
 projectTitle: Vertical AI
-projectImage: "./banner.jpeg"
+projectImage: "./banner.jpg"
 pubDate: "2009-01-19"
 category: deployed_on_akash
 
