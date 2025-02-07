@@ -15,16 +15,16 @@ const {
 ---
 
 <Layout
-  title="Become an Akash compute provider and earn"
+  title={heroSection.title}
   image={heroSection.heroImage.src}
-  description="Offer your compute resources on the Akash marketplace, and earn when people deploy. The Akash Provider Console walks you through the setup process, so you can get up and running on the Akash Supercloud."
+  description={heroSection.description}
 >
   <div class="bg-[#faf9f8] py-10 dark:bg-background md:py-20">
     <div class="container flex flex-col gap-y-14">
       <div
         class="flex flex-col items-center gap-6 lg:flex-row-reverse lg:justify-between lg:gap-14"
       >
-        <div class="flex-shrink md:max-w-[50%]">
+        <div class="w-full flex-shrink lg:max-w-[50%]">
           <Image
             src={heroSection.heroImage}
             alt={`HeroImage`}
@@ -47,7 +47,7 @@ const {
           </p>
 
           <div
-            class="mt-10 flex flex-col items-start gap-x-6 gap-y-3 md:mt-20 xl:flex-row"
+            class="mt-10 flex flex-col items-start gap-x-6 gap-y-3 xl:flex-row"
           >
             <a
               target="_blank"
