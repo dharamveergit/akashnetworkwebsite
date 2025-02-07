@@ -177,8 +177,10 @@ const shouldHide = shouldHideCta(pathname);
         <p class="text-base font-medium leading-[24px] text-foreground">
           Stay up to date with Akash Newsletter
         </p>
-
-        <SubscribeButton />
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          <SubscribeButton />
+          <SpeakToExpert size="small" />
+        </div>
       </div>
     </div>
 
@@ -240,8 +242,6 @@ const shouldHide = shouldHideCta(pathname);
         ))
       }
     </div>
-
-    <SpeakToExpert size="small" />
   </div>
 
   <div class="mt-20 hidden items-center justify-between border-y py-5 lg:flex">
