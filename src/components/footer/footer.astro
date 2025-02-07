@@ -172,14 +172,16 @@ const shouldHide = shouldHideCta(pathname);
       <a href="/" aria-label="Akash Network" class="text-foreground">
         <AkashFooterLogo />
       </a>
+      <div class="mt-4 md:hidden">
+        <SpeakToExpert size="small" />
+      </div>
 
       <div class="mt-10 flex flex-col items-start justify-start lg:hidden">
         <p class="text-base font-medium leading-[24px] text-foreground">
           Stay up to date with Akash Newsletter
         </p>
-        <div class="mt-4 flex flex-wrap items-center gap-2">
+        <div class="mt-4">
           <SubscribeButton />
-          <SpeakToExpert size="small" />
         </div>
       </div>
     </div>

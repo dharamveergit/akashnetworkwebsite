@@ -257,15 +257,22 @@ export const Tables = ({
               </div>
             </div>
           </div>
-          <a
-            id={"usage"}
-            href={"https://console.akash.network/"}
-            target="_blank"
-            className="flex justify-center gap-1.5 rounded-md bg-primary px-4 py-2 hover:bg-darkGray dark:hover:bg-background"
-          >
-            <p className="font-medium leading-[24px] text-white">Deploy Now</p>
-            <img src={arrowUpRight.src} alt="" />
-          </a>
+          <div className="flex flex-col gap-3">
+            <a
+              id={"usage"}
+              href={"https://console.akash.network/"}
+              target="_blank"
+              className="flex justify-center gap-1.5 rounded-md bg-primary px-4 py-2 hover:bg-darkGray dark:hover:bg-background"
+            >
+              <p className="font-medium leading-[24px] text-white">
+                Deploy Now
+              </p>
+              <img src={arrowUpRight.src} alt="" />
+            </a>
+            <div className="md:hidden">
+              <SpeakToExpert />
+            </div>
+          </div>
         </div>
 
         <div className="flex w-full flex-col gap-5  rounded-md border bg-background2 p-6 shadow-sm md:w-[274px]">
@@ -276,7 +283,9 @@ export const Tables = ({
             <CompareItem title="Azure" cost={azureCost} logo={azureLogo.src} />
           </div>
         </div>
-        <SpeakToExpert />
+        <div className="hidden md:block">
+          <SpeakToExpert />
+        </div>
       </div>
 
       <div className="flex w-full flex-col gap-6  rounded-md border bg-background2 p-6 shadow-sm">

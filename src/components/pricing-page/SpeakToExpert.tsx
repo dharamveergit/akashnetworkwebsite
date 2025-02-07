@@ -13,7 +13,7 @@ const speakToExpertVariants = cva(
       },
       variant: {
         primary:
-          "border-primary bg-primary/5 text-primary hover:bg-primary hover:text-white",
+          "border-primary dark:border-primary bg-primary/5 text-primary hover:bg-primary hover:text-white",
         secondary:
           "bg-white text-gray-600 hover:border-primary hover:text-primary",
       },
@@ -38,7 +38,7 @@ const SpeakToExpert = ({ size, variant }: SpeakToExpertProps) => {
         <svg
           className={clsx(
             size === "small"
-              ? "h-[18px] w-[18px]"
+              ? "h-[17px] w-[17px]"
               : size === "extra-small"
                 ? "size-4"
                 : "h-5 w-5",

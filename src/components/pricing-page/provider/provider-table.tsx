@@ -327,17 +327,22 @@ export const Tables = ({
               checked={aktAverage}
             />
           </div>
-          <a
-            id={`become-a-provider-(gpus)`}
-            href={`/providers/`}
-            target="_blank"
-            className=" flex justify-center gap-1.5 rounded-md bg-primary px-4 py-2"
-          >
-            <p className="font-medium leading-[24px] text-white">
-              Become a Provider
-            </p>
-            <img src={arrowUpRight.src} alt="" className="hidden lg:block" />
-          </a>
+          <div className="flex flex-col gap-3">
+            <a
+              id={`become-a-provider-(gpus)`}
+              href={`/providers/`}
+              target="_blank"
+              className=" flex justify-center gap-1.5 rounded-md bg-primary px-4 py-2"
+            >
+              <p className="font-medium leading-[24px] text-white">
+                Become a Provider
+              </p>
+              <img src={arrowUpRight.src} alt="" className="hidden lg:block" />
+            </a>
+            <div className="md:hidden">
+              <SpeakToExpert />
+            </div>
+          </div>
         </div>
 
         <div className="flex w-full flex-col gap-10  rounded-md border bg-background2 px-4 py-8 shadow-sm md:w-[340px] md:p-6">
@@ -378,7 +383,9 @@ export const Tables = ({
             value={`$${usdPrices.endpointTotalPrice.toFixed(2)}`}
           />
         </div>
-        <SpeakToExpert />
+        <div className="hidden md:block">
+          <SpeakToExpert />
+        </div>
       </div>
 
       <div className="flex w-full  flex-col md:gap-4 md:rounded-md md:border md:bg-background2 md:p-6 md:shadow-sm">
