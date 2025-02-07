@@ -1,38 +1,48 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 
-const SpeakToExpert = ({
-  size = "default",
-  variant = "primary",
-}: {
-  size?: "default" | "small" | "extra-small";
-  variant?: "primary" | "secondary";
-}) => {
+const speakToExpertVariants = cva(
+  "flex items-center justify-center border transition-all duration-300",
+  {
+    variants: {
+      size: {
+        default:
+          "w-full gap-2 rounded-md py-[9px] text-sm md:py-2 md:text-base",
+        small: "w-fit gap-2 rounded-md px-4 py-2 text-sm",
+        "extra-small": "w-fit gap-1 rounded-[4px] px-2 py-1.5 text-xs",
+      },
+      variant: {
+        primary:
+          "border-primary bg-primary/5 text-primary hover:bg-primary hover:text-white",
+        secondary:
+          "bg-white text-gray-600 hover:border-primary hover:text-primary",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+      variant: "primary",
+    },
+  },
+);
+
+interface SpeakToExpertProps
+  extends VariantProps<typeof speakToExpertVariants> {}
+
+const SpeakToExpert = ({ size, variant }: SpeakToExpertProps) => {
   return (
     <a
       href="https://share.hsforms.com/1gQOaeJXgQ-GMc7MnsTOmsAsaima"
       target="_blank"
     >
-      <button
-        className={clsx(
-          "flex   items-center justify-center  rounded-[4px] border   transition-all duration-300 ",
-          size === "small"
-            ? "w-fit gap-2 px-4 py-2 text-sm "
-            : size === "extra-small"
-              ? "w-fit gap-1 px-2 py-1.5 text-xs"
-              : "w-full gap-2 py-[9px] text-sm md:py-2 md:text-base",
-          variant === "secondary"
-            ? "bg-white text-gray-600 hover:border-primary hover:text-primary"
-            : "border-primary bg-primary/5  text-primary hover:bg-primary hover:text-white  ",
-        )}
-      >
+      <button className={speakToExpertVariants({ size, variant })}>
         <svg
-          className={
+          className={clsx(
             size === "small"
               ? "h-[18px] w-[18px]"
               : size === "extra-small"
                 ? "size-4"
-                : "h-5 w-5"
-          }
+                : "h-5 w-5",
+          )}
           viewBox="0 0 20 21"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
