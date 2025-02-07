@@ -26,13 +26,13 @@ cloudmosResourcesSection:
     - title: Credit Card Payments in Akash Console
       description: Akash Console now supports credit card payments, giving users a seamless way to manage costs without crypto.
       badge: "./assets/book-stack.svg"
-      link: "/docs/deployments/akash-console/"
+      link: "/blog/introducing-credit-card-payments-in-akash-console/"
       linkIcon: true
       linkLabel: "View More"
     - title: Developer Specific Workflows in Akash Console
       description: Tailored flows for different use cases, making it easier than ever to deploy, manage, and scale on Akash.
       badge: "./assets/youtube.svg"
-      link: "https://www.youtube.com/watch?v=KscVdyESSm4&t=869s"
+      link: "/blog/introducing-developer-specific-workflows-in-akash-console/ "
       linkIcon: true
       linkLabel: "View More"
 
@@ -52,7 +52,7 @@ resourcesSection:
 additionalDeploymentSection:
   title: Additional Deployment Resources
   resources:
-    - title: CLI
+    - title: Akash CLI
       content: Deploy and manage your applications on Akash with ease using the Command Line Interface
       link: "/docs/deployments/akash-cli/overview/"
     - title: CLI Booster
