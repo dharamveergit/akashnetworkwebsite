@@ -16,6 +16,7 @@ import arrowUpRight from "../../../assets/icons/arrow-up-right.svg";
 import IpsBrand from "../../../assets/ips-brand.svg";
 import MemoryBrand from "../../../assets/memory-brand.svg";
 import StorageBrand from "../../../assets/storage-brand.svg";
+import SpeakToExpert from "../SpeakToExpert";
 import MonthEarning from "./month-earning";
 import PricingUnit from "./pricing-unit";
 
@@ -377,6 +378,7 @@ export const Tables = ({
             value={`$${usdPrices.endpointTotalPrice.toFixed(2)}`}
           />
         </div>
+        <SpeakToExpert />
       </div>
 
       <div className="flex w-full  flex-col md:gap-4 md:rounded-md md:border md:bg-background2 md:p-6 md:shadow-sm">

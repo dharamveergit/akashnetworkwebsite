@@ -12,6 +12,7 @@ import awsLogo from "../../../assets/aws-logo.svg";
 import azureLogo from "../../../assets/azure-logo.svg";
 import gcpLogo from "../../../assets/gcp-logo.svg";
 import arrowUpRight from "../../../assets/icons/arrow-up-right.svg";
+import SpeakToExpert from "../SpeakToExpert";
 import CompareItem from "./compare-item";
 import Disclaimer from "./disclaimer";
 import UsageAmount from "./usage-amount";
@@ -275,6 +276,7 @@ export const Tables = ({
             <CompareItem title="Azure" cost={azureCost} logo={azureLogo.src} />
           </div>
         </div>
+        <SpeakToExpert />
       </div>
 
       <div className="flex w-full flex-col gap-6  rounded-md border bg-background2 p-6 shadow-sm">
