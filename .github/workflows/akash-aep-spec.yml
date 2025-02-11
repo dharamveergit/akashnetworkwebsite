@@ -31,19 +31,17 @@ jobs:
       - name: Clone and Update Specs
         id: update-specs
         run: |
-          # Store current state of AEP specs
-          mkdir -p temp_new_specs
-
           # Clone only the necessary files
           git clone --depth 1 --filter=blob:none https://github.com/dharamveergit/AEP.git temp_aep
 
-          # Copy specs to temporary location
-          cp -r temp_aep/spec/* temp_new_specs/
+          # Store specs outside the git working directory
+          mkdir -p ../temp_new_specs
+          cp -r temp_aep/spec/* ../temp_new_specs/
           rm -rf temp_aep
 
           # Check if we have actual changes by comparing with current specs
           if [ -d "src/content/aeps" ]; then
-            if diff -r src/content/aeps temp_new_specs > /dev/null; then
+            if diff -r src/content/aeps ../temp_new_specs > /dev/null; then
               echo "has_changes=false" >> $GITHUB_OUTPUT
             else
               echo "has_changes=true" >> $GITHUB_OUTPUT
@@ -59,7 +57,7 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
 
-          # Clean working directory
+          # Clean working directory (won't affect parent directory)
           git clean -fd
           git reset --hard
 
@@ -67,10 +65,10 @@ jobs:
           git fetch origin ${{ steps.check-pr.outputs.pr_branch }}
           git checkout -B ${{ steps.check-pr.outputs.pr_branch }} origin/${{ steps.check-pr.outputs.pr_branch }}
 
-          # Remove old specs and copy new ones
+          # Remove old specs and copy new ones from parent directory
           rm -rf src/content/aeps
           mkdir -p src/content/aeps
-          cp -r temp_new_specs/* src/content/aeps/
+          cp -r ../temp_new_specs/* src/content/aeps/
 
           # Commit and push changes
           git add src/content/aeps
@@ -86,7 +84,7 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
 
-          # Clean working directory
+          # Clean working directory (won't affect parent directory)
           git clean -fd
           git reset --hard
 
@@ -94,10 +92,10 @@ jobs:
           branch_name="update-aep-specs-$(date +%Y%m%d-%H%M%S)"
           git checkout -b $branch_name
 
-          # Remove old specs and copy new ones
+          # Remove old specs and copy new ones from parent directory
           rm -rf src/content/aeps
           mkdir -p src/content/aeps
-          cp -r temp_new_specs/* src/content/aeps/
+          cp -r ../temp_new_specs/* src/content/aeps/
 
           # Commit changes
           git add src/content/aeps
@@ -117,3 +115,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: spec-update
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -rf ../temp_new_specs
