@@ -72,23 +72,18 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
 
-          # Debug information
-          echo "Current branch:"
-          git branch
-
-          echo "Status before fetch:"
-          git status
+          # Stash any uncommitted changes
+          git stash --include-untracked
 
           # Fetch and checkout PR branch
           git fetch origin ${{ steps.check-pr.outputs.pr_branch }}
           git checkout ${{ steps.check-pr.outputs.pr_branch }}
 
-          echo "Status after checkout:"
-          git status
+          # Apply stashed changes (if any)
+          git stash pop || echo "No stashed changes to apply"
 
           # Stage and check for changes
           git add src/content/aeps
-
           if git diff --staged --quiet; then
             echo "No changes to commit after staging"
             exit 0
@@ -113,7 +108,6 @@ jobs:
 
           # Stage changes and check if there's anything to commit
           git add src/content/aeps
-
           if git diff --staged --quiet; then
             echo "No changes to commit after staging"
             exit 0
