@@ -121,7 +121,7 @@ jobs:
           gh pr create \
             --title "Update AEP Specs $(date +%Y-%m-%d)" \
             --body "Automated PR to update AEP specifications" \
-            --base main \
+            --base pr-to-main-aep \
             --head $branch_name
 
       - name: Trigger Build
