@@ -5,12 +5,12 @@ import { getYearToUse } from "@/utils/redirects";
 import { getCollection } from "astro:content";
 import clsx from "clsx";
 import DarkModeToggle from "../dark-mode-toggle.astro";
+import { CalendarModal } from "../development-pages/calendar-modal";
 import HamburgerMenu from "./hamburger-menu";
 import { DiscordIcon, GithubIcon, TwitterIcon } from "./icons";
 import PopOverCommunity, { SubNavbar } from "./popovers/popover-nav-community";
 import PopOverNavItemNetwork from "./popovers/popover-nav-item";
 import PopOverNavItemEcosystem from "./popovers/popover-nav-item-ecosystem";
-import { CalendarModal } from "../development-pages/calendar-modal";
 const pathname = `/${Astro.url.pathname.split("/")[1]}`;
 
 interface Props {
@@ -41,6 +41,14 @@ const posts = (await getCollection("Blog"))
 
 const latestRoadmapYear = getYearToUse();
 ---
+
+{
+  visibilty.development.includes(pathname) && (
+    <div class="container-nav fixed bottom-0 left-0 right-0 z-50 flex justify-end  py-3 md:hidden">
+      <CalendarModal client:load />
+    </div>
+  )
+}
 
 <header
   class={clsx(
@@ -174,7 +182,6 @@ const latestRoadmapYear = getYearToUse();
   {
     visibilty.development.includes(pathname) && (
       <SubNavbar pathname={Astro.url.pathname} client:load type="development" />
-      <div class="flex justify-end p-2 bg-background"><CalendarModal client:load /></div>
     )
   }
   {
