@@ -107,7 +107,7 @@ const PopOverSmall = ({
             </div>
             <a
               href={external?.link}
-              target="_blank"
+              target={external?.link.startsWith("http") ? "_blank" : "_self"}
               className="border-t bg-gray-50 px-7 py-3 font-semibold transition-all hover:bg-gray-100 dark:bg-background hover:dark:bg-darkGray"
             >
               <p className="inline-flex items-center text-sm font-semibold text-foreground ">
