@@ -1,6 +1,7 @@
 import {
   BadgeCheck,
   BadgeHelp,
+  Calendar,
   CalendarHeart,
   Codesandbox,
   FileStack,
@@ -14,6 +15,7 @@ type NavItem = {
   description?: string;
   link: string;
   external?: boolean;
+  primary?: boolean;
 };
 
 export const communityItems: NavItem[] = [
@@ -237,11 +239,13 @@ export const developmentItems: NavItem[] = [
     link: "/development/funding-program/",
   },
   {
-    title: "Product & Engineering Roadmap",
+    title: "Community Calendar",
+    icon: Calendar,
     description:
       "View all current technical efforts happening on the Akash Network",
-    link: "https://github.com/orgs/akash-network/projects/5",
+    link: "/development/welcome/#calendar",
     external: true,
+    primary: true,
   },
 ];
 

@@ -187,25 +187,24 @@ export const SubNavbar = ({
               );
             })}
         </div>
-        {external && (
-          <a
-            href={external.link}
-            target="_blank"
-            className=" flex items-center whitespace-nowrap rounded-full  border bg-background px-3 py-1.5 text-sm font-semibold  "
-          >
-            {external.title}
-            <ArrowRightCircle
-              className="ml-1 inline-block -rotate-45 stroke-[1.5px]"
-              size={16}
-            />
-          </a>
+        {type === "development" ? (
+          <CalendarModal />
+        ) : (
+          external && (
+            <a
+              href={external.link}
+              target="_blank"
+              className=" flex items-center whitespace-nowrap rounded-full  border bg-background px-3 py-1.5 text-sm font-semibold  "
+            >
+              {external.title}
+              <ArrowRightCircle
+                className="ml-1 inline-block -rotate-45 stroke-[1.5px]"
+                size={16}
+              />
+            </a>
+          )
         )}
       </div>
-      {type === "development" && (
-        <div className="container-nav absolute left-0 right-0 top-full hidden justify-end py-3 md:flex">
-          <CalendarModal />
-        </div>
-      )}
     </div>
   );
 };
