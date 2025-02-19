@@ -241,8 +241,6 @@ export const developmentItems: NavItem[] = [
   {
     title: "Community Calendar",
     icon: Calendar,
-    description:
-      "View all current technical efforts happening on the Akash Network",
     link: "/development/welcome/#calendar",
     external: true,
     primary: true,
