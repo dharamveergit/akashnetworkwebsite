@@ -1,5 +1,10 @@
 name: Update AEP Specs
 
+# Add permissions block at workflow level
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   repository_dispatch:
     types: [aep-spec-changed]
@@ -11,13 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # Use a PAT instead of GITHUB_TOKEN for better permissions
+          token: ${{ secrets.PAT_TOKEN }}
           fetch-depth: 0
 
       - name: Check for existing PR
         id: check-pr
         run: |
-          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+          gh auth login --with-token <<< "${{ secrets.PAT_TOKEN }}"
           PR_EXIST=$(gh pr list --search "Update AEP Specs" --state open --json number --jq 'length')
           echo "pr_exists=$PR_EXIST" >> $GITHUB_OUTPUT
           if [ "$PR_EXIST" -gt "0" ]; then
@@ -135,6 +141,7 @@ jobs:
           steps.update-specs.outputs.has_changes == 'true' && 
           (steps.update-pr.outputs.pr_number != '' || steps.create-pr.outputs.pr_number != '')
         run: |
+          gh auth login --with-token <<< "${{ secrets.PAT_TOKEN }}"
           PR_NUMBER="${{ steps.update-pr.outputs.pr_number }}${{ steps.create-pr.outputs.pr_number }}"
 
           # Enable auto-merge
@@ -144,5 +151,5 @@ jobs:
         if: success()
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
           event-type: spec-update
