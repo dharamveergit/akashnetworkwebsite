@@ -66,6 +66,7 @@ jobs:
           rm -rf ../old_specs
 
       - name: Update Existing PR
+        id: update-pr
         if: steps.update-specs.outputs.has_changes == 'true' && steps.check-pr.outputs.pr_exists != '0'
         run: |
           # Configure git
@@ -93,9 +94,11 @@ jobs:
           git commit -m "chore: update AEP specs [skip ci]"
           git push origin ${{ steps.check-pr.outputs.pr_branch }}
 
+          echo "pr_number=${{ steps.check-pr.outputs.pr_number }}" >> $GITHUB_OUTPUT
           echo "Updated existing PR #${{ steps.check-pr.outputs.pr_number }}"
 
       - name: Create New PR
+        id: create-pr
         if: steps.update-specs.outputs.has_changes == 'true' && steps.check-pr.outputs.pr_exists == '0'
         run: |
           # Configure git
@@ -117,12 +120,25 @@ jobs:
           git commit -m "chore: update AEP specs"
           git push origin $branch_name
 
-          # Create PR using GitHub CLI
-          gh pr create \
+          # Create PR using GitHub CLI and capture PR number
+          PR_NUMBER=$(gh pr create \
             --title "Update AEP Specs $(date +%Y-%m-%d)" \
             --body "Automated PR to update AEP specifications" \
             --base pr-to-main-aep \
-            --head $branch_name
+            --head $branch_name \
+            --json number --jq '.number')
+
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Auto-merge PR
+        if: |
+          steps.update-specs.outputs.has_changes == 'true' && 
+          (steps.update-pr.outputs.pr_number != '' || steps.create-pr.outputs.pr_number != '')
+        run: |
+          PR_NUMBER="${{ steps.update-pr.outputs.pr_number }}${{ steps.create-pr.outputs.pr_number }}"
+
+          # Enable auto-merge
+          gh pr merge $PR_NUMBER --auto --merge --delete-branch
 
       - name: Trigger Build
         if: success()
