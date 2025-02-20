@@ -1,10 +1,9 @@
 ---
 title: Steering Committee
 
-heading: Akash Network - Steering Committee (SC)
 description: "The Steering Committee is a special SIG that periodically evaluates the list of projects, prioritizes/adds/removes items and decides which SIG or WG is best suited to tackle the project. The Steering Committee also regularly meets to incorporate learnings to improve how the Akash Network community operates and will perform conflict resolution as necessary."
 
-category: working-groups
+category: steering-committee
 
 meetings:
   dateLabel: Last Thursday of each Month
