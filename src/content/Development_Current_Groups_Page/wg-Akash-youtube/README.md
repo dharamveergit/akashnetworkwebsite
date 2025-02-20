@@ -3,7 +3,6 @@ title: Akash Youtube
 description: This working group is responsible for managing and improving the Akash Network Youtube Channel. Thank you for wanting to contribute. The Akash Network Youtube Channel can be found [here](https://www.youtube.com/c/AkashNetwork).
 date: 2025-02-21T00:00:00Z
 category: working-groups
-heading: Akash Youtube Working Group
 meetings:
   dateLabel: First Meeting is Tuesday, February 21
   link:

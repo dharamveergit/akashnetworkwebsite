@@ -1,8 +1,6 @@
 ---
 title: Akash Website
 date: 2025-02-20T00:00:00-08:00
-
-heading: Akash Network Website Working Group
 description: This working group is responsible for managing and improving the Akash Network Website. Thank you for wanting to contribute. The Akash Network Website repo can be found [here](https://github.com/akash-network/website).
 
 category: working-groups

@@ -1,7 +1,6 @@
 ---
 title: "Content Moderation Working Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Content Moderation Working Group
 description: The Content Moderation working group aims to build tools and functionality that gives providers control over the applications that run on their systems.
 
 category: working-groups

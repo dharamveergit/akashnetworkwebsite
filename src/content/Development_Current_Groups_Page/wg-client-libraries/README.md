@@ -1,8 +1,6 @@
 ---
 title: "Client Libraries Working Group"
 date: 2023-1-09T00:19:20-08:00
-
-heading: Akash Network Client Libraries Working Group
 description: This working group is responsible for the design, implementation, testing and documentation of the client libraries to interact with the Akash Network.
 
 category: working-groups

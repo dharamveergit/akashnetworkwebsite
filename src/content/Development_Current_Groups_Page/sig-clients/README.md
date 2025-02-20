@@ -1,7 +1,6 @@
 ---
 title: "Clients Special Interest Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Clients Special Interest Group (SIG)
 description: Akash Network Clients are software and services that make it easier for tenants of all types to deploy on to Akash Providers as well as for new provider onboarding. The Akash Network community has built and supports the following deployment & provider onboarding clients at this time
 
 category: special-interest-groups

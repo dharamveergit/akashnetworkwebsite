@@ -1,7 +1,6 @@
 ---
 title: "Testnets Working Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Testnets & Sandbox Environments Working Group
 description: This working group is dedicated to figuring out Akash Network's strategy with testnets and sandbox environments as well as defining the work necessary to create and maintain them
 
 category: working-groups

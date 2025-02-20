@@ -1,7 +1,6 @@
 ---
 title: "Documentation Special Interest Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Documentation Special Interest Group (SIG)
 description: The goal of this SIG is to foster a community around the creation and maintenance of top-tier documentation to facilitate the growth of Akash Network.
 
 category: special-interest-groups

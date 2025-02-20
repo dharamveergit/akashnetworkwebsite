@@ -1,7 +1,6 @@
 ---
 title: Education
 date: 2025-02-20T00:00:00-08:00
-heading: Akash Network - Education Special Interest Group (SIG)
 description: This SIG (Special Interest Group) is focused on all efforts related to educating users about all things Akash. Sig-education is tasked with finding subjects for educational content, as well as creating a wide range of content to be distributed to the Akash community.
 
 category: special-interest-groups
