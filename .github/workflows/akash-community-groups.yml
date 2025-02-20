@@ -39,7 +39,7 @@ jobs:
 
           # Clone the community repository
           rm -rf temp_community
-          git clone --depth 1 https://github.com/dharamveergit/community.git temp_community
+          git clone --depth 1 https://github.com/akash-network/community.git temp_community
 
           # Create target directory if it doesn't exist
           mkdir -p src/content/Development_Current_Groups_Page
@@ -116,7 +116,7 @@ jobs:
           gh pr create \
             --title "Update Community Groups $(date +%Y-%m-%d)" \
             --body "Automated PR to update community groups documentation" \
-            --base community-repo-connect \
+            --base main \
             --head $branch_name
 
       - name: Trigger Build
