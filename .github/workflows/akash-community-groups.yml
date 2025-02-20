@@ -116,7 +116,7 @@ jobs:
           gh pr create \
             --title "Update Community Groups $(date +%Y-%m-%d)" \
             --body "Automated PR to update community groups documentation" \
-            --base main \
+            --base community-connect \
             --head $branch_name
 
       - name: Trigger Build
