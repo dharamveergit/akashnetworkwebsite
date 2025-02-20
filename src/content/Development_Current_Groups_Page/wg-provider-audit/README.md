@@ -1,7 +1,6 @@
 ---
 title: "Provider Audit Working Group"
 date: 2023-1-10T00:19:20-08:00
-heading: Akash Network Provider Monitoring Working Group
 description: This working group is for defining any specifications and scope of code changes for making it easy to monitor providers. Note that this working group does not deal with provider analytics but is considered with pure monitoring of the infrastructure (for improved uptime, SLA and such)
 
 category: working-groups

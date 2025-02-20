@@ -1,7 +1,6 @@
 ---
 title: " 2023 Events - Working Group"
 date: 2023-2-10T00:19:20-08:00
-heading: Akash Network - Events - WG
 description: This working group is to discuss events to attend, year by year, and ways to encourage community attendance.
 
 category: working-groups

@@ -1,7 +1,6 @@
 ---
 title: "Support Special Interest Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Support Special Interest Group (SIG)
 description: sig-support is responsible for defining mechanics of how support works at Akash Network, as well as organizing a distributed support team across the world. The Support Special Interest group meets biweekly to discuss open issues in the Support Repo. If time permits, the group discusses issues related to the Akash Console which can be found the Console Repo.
 
 category: special-interest-groups

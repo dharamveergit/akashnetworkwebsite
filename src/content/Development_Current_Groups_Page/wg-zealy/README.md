@@ -1,7 +1,6 @@
 ---
 title: Zealy
 date: 2025-02-20T00:19:20-08:00
-heading: Akash Network Zealy Working Group
 description: This working group is to launch an Akash account on Zealy (formerly Crew3.xyz), a community builder platform. The aim of this group is to increase awareness about Akash in gamify form, and create tasks for the community based on their skill level. e.g influencer, developer, provider, content creator etc.The working group is created to work on the proposal to see what support is needed, outline the goals and forecast outcome, decide on the user rewards, points, ladder system and time. Based on this metrics, we will be able to see the full picture and the success of the program.
 
 category: working-groups

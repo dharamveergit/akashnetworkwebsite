@@ -1,7 +1,6 @@
 ---
 title: "Design Special Interest Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Design Special Interest Group (SIG)
 description: Design Special Interest Group is dedicated to defining and building a design for all things Akash.
 
 category: special-interest-groups

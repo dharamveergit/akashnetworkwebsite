@@ -1,7 +1,6 @@
 ---
 title: "Analytics Special Interest Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Analytics Special Interest Group (SIG)
 description: Analytics Special Interest Group is dedicated to defining and building tools that allow data analytics for deployments, providers, chain metrics, etc.
 
 category: special-interest-groups

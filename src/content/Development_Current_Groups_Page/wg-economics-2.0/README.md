@@ -1,7 +1,6 @@
 ---
 title: Economics 2.0
 date: 2025-02-21T00:00:00Z
-heading: Akash Network Economics 2.0 Working Group
 description: This working group is for the development of Akash Economics 2.0 which aims to provide more budget towards network development activies while trading off security budget among other variables.
 category: working-groups
 meetings:

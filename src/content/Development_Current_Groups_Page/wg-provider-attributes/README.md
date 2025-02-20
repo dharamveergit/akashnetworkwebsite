@@ -1,7 +1,6 @@
 ---
 title: "Provider Attributes Working Group"
 date: 2023-1-10T00:19:20-08:00
-heading: Akash Network Provider Attributes Working Group
 description: This working group is for figuring out the schema for how providers specify attributes and for maintaining a list of required and optional provider attributes that can be referenced by Akash Network providers.
 
 category: working-groups

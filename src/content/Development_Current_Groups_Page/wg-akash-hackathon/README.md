@@ -1,8 +1,6 @@
 ---
 title: "Akash Hackathon Working Group"
 date: 2024-02-20T00:19:20-08:00
-
-heading: Akash Network Akash Hackathon Working Group
 description: The Akash Hackathon Working Group is responsible for creating a Akash Hackathon event, as well as finding other hackathons for an Akash focused team to attend.  Hackathons are a key driver of developer growth.
 
 category: working-groups

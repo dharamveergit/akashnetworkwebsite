@@ -1,7 +1,6 @@
 ---
 title: "Economics Special Interest Group"
 date: 2023-1-09T00:19:20-08:00
-heading: Akash Network - Economics Special Interest Group (SIG)
 description: The goal of this SIG is to ensure that AKT, the utility token of Akash Network, is used in ways to incentivize long-term, sustainable growth of the network. This can include but is not limited to incentivizing engineering development, provider onboarding, community efforts, and security budget.
 category: special-interest-groups
 

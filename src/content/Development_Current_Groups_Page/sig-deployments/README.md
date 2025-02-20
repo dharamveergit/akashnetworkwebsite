@@ -1,8 +1,6 @@
 ---
 title: "Deployments Special Interest Group "
 date: 2023-1-09T00:19:20-08:00
-
-heading: Akash Network - Deployments Special Interest Group (SIG)
 description: Akash Network - Deployments Special Interest Group (SIG)
 
 category: special-interest-groups
