@@ -31,7 +31,7 @@ praetorResourcesSection:
     - title: Akash Provider Console Docs
       description: Learn how to set up your own cloud provider on the Akash Supercloud.
       badge: "./assets/book-stack.svg"
-      link: "https://docs.praetorapp.com/"
+      link: "/docs/providers/build-a-cloud-provider/kubernetes-cluster-for-akash-providers/kubernetes-cluster-for-akash-providers/"
       linkIcon: true
       linkLabel: "View More"
     - title: Provider Status
