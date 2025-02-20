@@ -20,6 +20,7 @@ import {
 import clsx from "clsx";
 import { ArrowRightCircle, ChevronDown } from "lucide-react";
 import { Fragment } from "react";
+import SpeakToExpert from "../pricing-page/SpeakToExpert";
 import {
   communityItems,
   developmentItems,
@@ -185,24 +186,32 @@ const Panel = ({
                                 }
                                 className={clsx(
                                   subItem?.external
-                                    ? "flex w-full items-center justify-center rounded-full bg-[#F2F2F2] p-3 text-base dark:bg-background2"
+                                    ? subItem?.primary
+                                      ? "flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-primary/5 p-3  text-primary hover:bg-primary/10 dark:border-primary/10"
+                                      : "flex w-full items-center justify-center rounded-full bg-[#F2F2F2] p-3 text-base dark:bg-background2"
                                     : "flex cursor-pointer items-center gap-2 p-2 text-base text-para     ",
                                 )}
                               >
-                                {!subItem?.external &&
+                                {(subItem.primary || !subItem?.external) &&
                                   (subItem.icon ? (
-                                    <subItem.icon size={24} strokeWidth={1.5} />
+                                    <subItem.icon
+                                      size={subItem?.external ? 18 : 24}
+                                      strokeWidth={subItem?.primary ? 1.5 : 1.2}
+                                    />
                                   ) : (
                                     subItem.customIcon
                                   ))}
                                 <p
                                   className={clsx(
-                                    "flex-1 whitespace-nowrap  font-medium text-foreground",
+                                    " whitespace-nowrap  font-medium ",
                                     subItem?.external && "text-center",
+                                    subItem?.primary
+                                      ? " text-primary"
+                                      : "text-foreground",
                                   )}
                                 >
                                   {subItem.title}
-                                  {subItem.external && (
+                                  {subItem.external && !subItem.primary && (
                                     <ArrowRightCircle
                                       className="ml-1 inline-block -rotate-45 stroke-[1.5px]"
                                       size={16}
@@ -236,7 +245,7 @@ const Panel = ({
         </div>
 
         <div className="flex flex-col gap-y-6">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
             <a
               href="https://console.akash.network/"
               id="console-header"
@@ -244,6 +253,7 @@ const Panel = ({
             >
               Deploy Now
             </a>
+            <SpeakToExpert />
           </div>
 
           <div className="flex items-center justify-between border-t border-border py-7 text-para">
