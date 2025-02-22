@@ -39,6 +39,7 @@ const posts = (await getCollection("Blog"))
   });
 
 const latestRoadmapYear = getYearToUse();
+const fullPath = Astro.url.pathname;
 ---
 
 <header
@@ -55,7 +56,8 @@ const latestRoadmapYear = getYearToUse();
 >
   <nav
     class={clsx(
-      "container  mx-auto flex h-[56px] items-center justify-between space-x-2 md:h-[84px]",
+      "  mx-auto flex h-[56px] items-center justify-between space-x-2 md:h-[84px]",
+      /^\/blog\/.+/.test(fullPath) ? "container-nav" : "container",
     )}
     id="page-top"
   >
