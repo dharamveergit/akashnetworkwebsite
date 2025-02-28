@@ -6,7 +6,6 @@ title: "gVisor Issue - No system-cgroup v2 Support"
 linkTitle: "gVisor Issue - No system-cgroup v2 Support"
 ---
 
-
 ## Overview of Issue
 
 If you are using a newer systemd then your container will get stuck in ContainerCreating state on your provider with gVisor enabled.
@@ -25,9 +24,9 @@ retry: unknown
 
 ```
  Warning  FailedCreatePodSandBox  0s (x13 over 12s)  kubelet  Failed to
-create pod sandbox: rpc error: code = Unknown desc = failed to create 
+create pod sandbox: rpc error: code = Unknown desc = failed to create
 containerd task: failed to create shim: OCI runtime create failed: creating
-container: write 
+container: write
 /sys/fs/cgroup/kubepods/besteffort/pod7a38b06d-4c96-49ff-bc4a-3d8288892b3b/cgroup.procs: device or resource busy: unknown
 ```
 
@@ -39,8 +38,8 @@ Ubuntu version 21.10 is affected.
 
 ### Support References
 
-* systemd switches to the "unified" cgroup hierarchy [documentation](https://salsa.debian.org/systemd-team/systemd/-/commit/170fb124a32884bd9975ee4ea9e1ffbbc2ee26b4)
-* systemd-cgroup support in gVisor [documentation](https://github.com/google/gvisor/issues/193)
+- systemd switches to the "unified" cgroup hierarchy [documentation](https://salsa.debian.org/systemd-team/systemd/-/commit/170fb124a32884bd9975ee4ea9e1ffbbc2ee26b4)
+- systemd-cgroup support in gVisor [documentation](https://github.com/google/gvisor/issues/193)
 
 ## Workaround
 
