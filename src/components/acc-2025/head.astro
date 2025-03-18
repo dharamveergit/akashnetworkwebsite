@@ -6,8 +6,7 @@ import ButtonLink from "../ui/button-link.astro";
   <div class="container flex justify-between">
     <div class="flex gap-5">
       <svg
-        width="117"
-        height="69"
+        class="h-[50px] w-[100px] 2xl:h-[69px] 2xl:w-[117px]"
         viewBox="0 0 117 69"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -30,16 +29,20 @@ import ButtonLink from "../ui/button-link.astro";
           d="M20.2307 27.217H32.7741L20.2359 49.0723L13.959 38.1473L20.2307 27.217Z"
           fill="white"></path>
       </svg>
-      <h1 class="text-7xl font-bold">Akash <br /> Accelerate</h1>
+      <h1 class="text-5xl font-bold 2xl:text-7xl">Akash <br /> Accelerate</h1>
     </div>
-    <h2 class="pr-[137px] text-7xl font-semibold">2025</h2>
+    <h2 class="pr-[120px] text-5xl font-semibold 2xl:pr-[137px] 2xl:text-7xl">
+      2025
+    </h2>
   </div>
 </section>
 
 <section class="border-b-2 border-black dark:border-[#D9D9D9]">
   <div class="container">
-    <div class="flex flex-col gap-5 px-[137px] py-10">
-      <p class="max-w-[50rem] text-3xl font-medium text-foreground">
+    <div class="flex flex-col gap-5 px-[120px] py-10 2xl:px-[137px]">
+      <p
+        class="max-w-[50rem] text-2xl font-medium text-foreground 2xl:text-3xl"
+      >
         Akash Accelerate is a full-day summit that will bring together the
         entire ecosystem for a packed agenda of talks, panels, and discussions
         exploring the future of decentralized compute and open-source AI.
@@ -48,7 +51,7 @@ import ButtonLink from "../ui/button-link.astro";
         link="/akash-accelerate-2025"
         variant="primary"
         size="xl"
-        className="!px-5 !py-2 text-lg font-medium"
+        className="font-medium 2xl:!px-5 2xl:!py-2 2xl:text-lg"
       >
         Register Now!
       </ButtonLink>
