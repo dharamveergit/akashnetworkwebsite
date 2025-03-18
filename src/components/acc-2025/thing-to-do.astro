@@ -1,0 +1,65 @@
+---
+import { Heart, MessageSquare, Mic, User, Users } from "lucide-react";
+---
+
+<section>
+  <div class="border-b-2 border-black py-10 dark:border-[#D9D9D9]">
+    <div class="container">
+      <div class="flex flex-col gap-10 px-[137px]">
+        <h3 class="text-4xl font-semibold">Things to see and do</h3>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <!-- Inspiring Talks & Keynotes -->
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+              <Mic className="size-10" />
+
+              <Heart className="size-10" />
+            </div>
+            <h4 class="text-3xl font-semibold">
+              Inspiring Talks &<br />
+              Keynotes
+            </h4>
+            <p class="text-lg text-foreground">
+              Hear from top minds in decentralized compute and open-source AI as
+              they share insights on the latest tech, real-world applications,
+              and where the industry is headed.
+            </p>
+          </div>
+
+          <!-- Engaging Panels & Discussions -->
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+              <MessageSquare className="size-10" />
+            </div>
+            <h4 class="text-3xl font-semibold">
+              Engaging Panels &<br /> Discussions
+            </h4>
+            <p class="text-lg text-foreground">
+              Join deep-dive conversations on scaling AI, decentralized cloud
+              infrastructure, and the economics of open-source compute. Get
+              perspectives from developers, founders, and researchers.
+            </p>
+          </div>
+
+          <!-- Networking & Collaboration -->
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+              <Users className="size-10" />
+
+              <User className="size-10" />
+            </div>
+            <h4 class="text-3xl font-semibold">
+              Networking &<br /> Collaboration
+            </h4>
+            <p class="text-lg text-foreground">
+              Meet builders, connect with partners, and explore new ideas.
+              Whether it's in breakout sessions, demos, or casual meetups,
+              there's plenty of room to collaborate and grow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
