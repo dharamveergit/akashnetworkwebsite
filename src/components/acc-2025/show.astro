@@ -47,8 +47,7 @@ import TableCard from "../accelerate/table-card.astro";
         </div>
         <div class="relative flex w-full flex-col gap-4">
           <svg
-            class="absolute right-0 top-0 z-[4]"
-            width="328"
+            class="absolute right-0 top-0 z-[4] w-[200px] lg:w-[328px]"
             height="328"
             viewBox="0 0 328 328"
             fill="none"
@@ -127,7 +126,7 @@ import TableCard from "../accelerate/table-card.astro";
 
           <svg
             width="1060"
-            class="absolute -left-[10%] -top-[8%] z-[2] w-full"
+            class="absolute -left-[10%] -top-[60%] z-[2] w-full lg:-top-[8%]"
             height="774"
             viewBox="0 0 1060 774"
             fill="none"
@@ -213,69 +212,132 @@ import TableCard from "../accelerate/table-card.astro";
               </filter>
             </defs>
           </svg>
+          <div class="hidden flex-col gap-4 lg:flex">
+            {
+              new Array(6).fill(0).map((_, index) => (
+                <TableCard time="10:30 AM">
+                  <svg
+                    slot="svg"
+                    width="64"
+                    height="33"
+                    viewBox="0 0 64 33"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="0.523117"
+                      y="0.985519"
+                      width="62.9538"
+                      height="30.9538"
+                      rx="15.4769"
+                      class="stroke-defaultBorder"
+                      stroke-width="1.04623"
+                    />
+                    <path
+                      d="M34 16.5L23.5 26.0263L23.5 6.97372L34 16.5Z"
+                      fill="#FF414C"
+                    />
+                    <path
+                      d="M44 16.5L32.75 26.0263L32.75 6.97372L44 16.5Z"
+                      fill="#FF414C"
+                    />
+                  </svg>
 
-          {
-            new Array(6).fill(0).map((_, index) => (
-              <TableCard time="10:30 AM">
-                <svg
-                  slot="svg"
-                  width="64"
-                  height="33"
-                  viewBox="0 0 64 33"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="0.523117"
-                    y="0.985519"
-                    width="62.9538"
-                    height="30.9538"
-                    rx="15.4769"
-                    class="stroke-defaultBorder"
-                    stroke-width="1.04623"
-                  />
-                  <path
-                    d="M34 16.5L23.5 26.0263L23.5 6.97372L34 16.5Z"
-                    fill="#FF414C"
-                  />
-                  <path
-                    d="M44 16.5L32.75 26.0263L32.75 6.97372L44 16.5Z"
-                    fill="#FF414C"
-                  />
-                </svg>
+                  <p class="font-medium">Doors open & Breakfast is served</p>
+                </TableCard>
+              ))
+            }
+            <TableCard time="00:30 AM">
+              <svg
+                slot="svg"
+                width="64"
+                height="33"
+                viewBox="0 0 64 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="0.523117"
+                  y="0.985519"
+                  width="62.9538"
+                  height="30.9538"
+                  rx="15.4769"
+                  class="stroke-defaultBorder"
+                  stroke-width="1.04623"></rect>
+                <path
+                  d="M34 16.5L23.5 26.0263L23.5 6.97372L34 16.5Z"
+                  fill="#FF414C"></path>
+                <path
+                  d="M44 16.5L32.75 26.0263L32.75 6.97372L44 16.5Z"
+                  fill="#FF414C"></path>
+              </svg>
 
-                <p class="font-medium">Doors open & Breakfast is served</p>
-              </TableCard>
-            ))
-          }
+              <p class="font-medium">Doors open & Breakfast is served</p>
+            </TableCard>
+          </div>
+          <div class="flex flex-col gap-4 lg:hidden">
+            {
+              new Array(2).fill(0).map((_, index) => (
+                <TableCard time="10:30 AM">
+                  <svg
+                    slot="svg"
+                    width="64"
+                    height="33"
+                    viewBox="0 0 64 33"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="0.523117"
+                      y="0.985519"
+                      width="62.9538"
+                      height="30.9538"
+                      rx="15.4769"
+                      class="stroke-defaultBorder"
+                      stroke-width="1.04623"
+                    />
+                    <path
+                      d="M34 16.5L23.5 26.0263L23.5 6.97372L34 16.5Z"
+                      fill="#FF414C"
+                    />
+                    <path
+                      d="M44 16.5L32.75 26.0263L32.75 6.97372L44 16.5Z"
+                      fill="#FF414C"
+                    />
+                  </svg>
 
-          <TableCard time="00:30 AM">
-            <svg
-              slot="svg"
-              width="64"
-              height="33"
-              viewBox="0 0 64 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="0.523117"
-                y="0.985519"
-                width="62.9538"
-                height="30.9538"
-                rx="15.4769"
-                class="stroke-defaultBorder"
-                stroke-width="1.04623"></rect>
-              <path
-                d="M34 16.5L23.5 26.0263L23.5 6.97372L34 16.5Z"
-                fill="#FF414C"></path>
-              <path
-                d="M44 16.5L32.75 26.0263L32.75 6.97372L44 16.5Z"
-                fill="#FF414C"></path>
-            </svg>
+                  <p class="font-medium">Doors open & Breakfast is served</p>
+                </TableCard>
+              ))
+            }
+            <TableCard time="00:30 AM">
+              <svg
+                slot="svg"
+                width="64"
+                height="33"
+                viewBox="0 0 64 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="0.523117"
+                  y="0.985519"
+                  width="62.9538"
+                  height="30.9538"
+                  rx="15.4769"
+                  class="stroke-defaultBorder"
+                  stroke-width="1.04623"></rect>
+                <path
+                  d="M34 16.5L23.5 26.0263L23.5 6.97372L34 16.5Z"
+                  fill="#FF414C"></path>
+                <path
+                  d="M44 16.5L32.75 26.0263L32.75 6.97372L44 16.5Z"
+                  fill="#FF414C"></path>
+              </svg>
 
-            <p class="font-medium">Doors open & Breakfast is served</p>
-          </TableCard>
+              <p class="font-medium">Doors open & Breakfast is served</p>
+            </TableCard>
+          </div>
         </div>
       </div>
     </div>
