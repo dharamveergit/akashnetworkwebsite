@@ -1,9 +1,9 @@
 name: Update AEP Specs
 
 on:
-  schedule:
-    - cron: "0 */6 * * *" # Check every 6 hours
   workflow_dispatch:
+  repository_dispatch:
+    types: [aep-repo-trigger]
 
 jobs:
   update-specs:
@@ -124,9 +124,7 @@ jobs:
             --base main \
             --head $branch_name
 
-      - name: Trigger Build
-        if: success()
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: spec-update
+      - name: Auto-Merge PR
+        if: steps.update-specs.outputs.has_changes == 'true'
+        run: |
+          gh pr merge --auto --squash --delete-branch ${{ steps.check-pr.outputs.pr_number }}
