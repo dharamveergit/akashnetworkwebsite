@@ -48,7 +48,7 @@ jobs:
 
           # Clone the AEP repository
           rm -rf temp_aep
-          git clone --depth 1 https://github.com/akashnetworkwebsite/AEP.git temp_aep
+          git clone --depth 1 https://github.com/dharamveergit/AEP.git temp_aep
 
           # Clear existing specs and copy new ones
           rm -rf src/content/aeps
