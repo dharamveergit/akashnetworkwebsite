@@ -12,8 +12,11 @@ roadmap: major
 
 ## Summary
 
+<<<<<<< Updated upstream
 
 The Managed Service Market (MSM) strengthens the Akash ecosystem by unlocking a new wave of service providers and enhances the liquidity of AKT.
+=======
+>>>>>>> Stashed changes
 
 MSM enables creators of software to generate meaningful income while sustaining improving their work and keep software open. Today, the value capture is at a massive imbalance where Cloud Service Providers (CSPs) are the biggest benefactors. MSM balances this asymmetry.
 
