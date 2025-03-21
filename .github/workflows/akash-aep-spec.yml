@@ -48,7 +48,7 @@ jobs:
 
           # Clone the AEP repository
           rm -rf temp_aep
-          git clone --depth 1 https://github.com/akash-network/AEP.git temp_aep
+          git clone --depth 1 https://github.com/akashnetworkwebsite/AEP.git temp_aep
 
           # Clear existing specs and copy new ones
           rm -rf src/content/aeps
@@ -136,7 +136,7 @@ jobs:
             PR_URL=$(gh pr create \
               --title "Update AEP Specs $(date +%Y-%m-%d)" \
               --body "Automated PR to update AEP specifications" \
-              --base main \
+              --base aep-2 \
               --head $branch_name)
 
             # Extract PR number from PR URL
