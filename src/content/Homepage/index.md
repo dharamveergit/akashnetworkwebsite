@@ -12,7 +12,7 @@ heroSection:
       description: "Browse a wide range of cloud resources and live network pricing"
       buttons:
         - label: "Explore pricing"
-          link: "/about/pricing/custom/"
+          link: "/pricing/usage-calculator/"
           type: secondary
         - label: "View GPU availability"
           link: "/pricing/gpus"
@@ -115,10 +115,10 @@ aiModelsAndAppsSection:
       description: "Mistral-7B-v0.2 Large Language Model (LLM) is a pretrained generative text model with 7 billion parameters by Mistral AI. This application is running on NVIDIA GPUs leased from the Akash Supercloud."
       link: "https://chat.akash.network/"
 
-    - title: "Akash SDXL"
-      image: "./assets/tools/2.svg"
-      description: "SDXL is a high quality text-to-image model from Stability AI. This application is running on NVIDIA A100s leased from the Akash Supercloud, to achieve high-performing and cost-effective inference of 1024×1024 images."
-      link: "https://sdxl.akash.network/"
+    - title: "AkashGen"
+      image: "./assets/tools/2.png"
+      description: "AkashGen is a high quality text-to-image model from Stability AI. This application is running on NVIDIA A100s leased from the Akash Supercloud, to achieve high-performing and cost-effective inference of 1024×1024 images."
+      link: "https://gen.akash.network/"
 
 
     - title: "Ray cluster on Akash"
@@ -161,17 +161,18 @@ aiModelsAndAppsSection:
         label: Console Docs
         link: "/docs/getting-started/quickstart-guides/akash-console/"
 
-    - image:  "./assets/tools/praetor.svg"
-      description: "Praetor App makes it simple to become an Akash Network cloud provider. Use a streamlined UI to become a provider. "
-      logoTitle: Praetor App
+    - image:  "./assets/tools/awesomeakash.svg"
+      darkImage : "./assets/tools/awesomeakash.svg"
+      description: "Offer your compute resources on the Akash marketplace, and earn when people deploy. The Akash Provider Console walks you through the setup process, so you can get up and running on the Akash Supercloud."
+      logoTitle: Provider Console
 
       launchAppLink: 
         label: Launch App
-        link: "https://praetorapp.com/"
+        link: "https://provider-console.akash.network/"
 
       docsLink: 
-        label: Praetor Docs
-        link: "https://docs.praetorapp.com/"
+        label: Provider Console Docs
+        link: "/docs/providers/build-a-cloud-provider/akash-cli/kubernetes-cluster-for-akash-providers/kubernetes-cluster-for-akash-providers/"
 
     - image:  "./assets/tools/awesomeakash.svg"
       description: " View collection of SDL deployment templates based on the Awesome Akash GitHub repository "

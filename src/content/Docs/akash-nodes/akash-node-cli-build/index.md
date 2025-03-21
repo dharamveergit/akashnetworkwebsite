@@ -166,7 +166,7 @@ _**This setting can be found in the following file and we will change the defaul
 vi ~/.akash/config/app.toml
 ```
 
-_**The initial recommended min-gas-prices is 0.025uakt but you might want to change it later.**_
+_**The initial recommended min-gas-prices is 0.0025uakt but you might want to change it later.**_
 
 ```
 # This is a TOML config file.
@@ -178,7 +178,7 @@ _**The initial recommended min-gas-prices is 0.025uakt but you might want to cha
 # transaction. A transaction's fees must meet the minimum of any denomination
 # specified in this config (e.g. 10uatom).
 
-minimum-gas-prices = "0.025uakt"
+minimum-gas-prices = "0.0025uakt"
 ```
 
 ## STEP6 - Copy the Genesis File
@@ -374,7 +374,7 @@ cat $HOME/.akash/config/config.toml
 
 We could let our node catch up to the current block but this would take a very long time. Instead we will download a snapshot of the blockchain before starting our node.
 
-**NOTE** - at the time of this writing the snapshot is 200GB and could take some time to pull down.
+**NOTE** - at the time of this writing the snapshot is 7GB.
 
 ### Remove Existing Data
 

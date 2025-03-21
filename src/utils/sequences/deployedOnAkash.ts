@@ -12,6 +12,9 @@ export const deployedOnAkash = [
   "Auki",
   "Bagel",
   "Levangie Laboratories",
+  "yesnoerror",
+  "Vertical AI",
+  "Bless",
 ];
 
 export function getPriorityIndex(title: any) {
