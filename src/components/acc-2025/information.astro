@@ -2,15 +2,18 @@
 import { ArrowDownLeft } from "lucide-react";
 ---
 
-<section class="border-b-2 py-10 dark:border-[#D9D9D9]">
+<section class="border-b-2 pb-10 pt-4 dark:border-[#D9D9D9]">
   <div class="container">
-    <div class="flex flex-col gap-14 md:px-[120px] 2xl:px-[137px]">
-      <h2 class="text-4xl font-semibold 2xl:text-6xl">Further information</h2>
+    <div class="flex flex-col gap-14 px-[47px] md:px-[120px] 2xl:px-[137px]">
+      <h2 class="text-2xl font-semibold md:text-4xl 2xl:text-6xl">
+        Further information
+      </h2>
 
       <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
         <div>
           <div class="mb-4 flex flex-col gap-4">
             <svg
+              class="size-7 md:size-10"
               width="19"
               height="41"
               viewBox="0 0 19 41"
@@ -25,39 +28,43 @@ import { ArrowDownLeft } from "lucide-react";
                 fill="white"></path>
             </svg>
 
-            <h2 class="text-2xl font-semibold 2xl:text-3xl">Follow Akash</h2>
+            <h2 class="text-xl font-semibold md:text-2xl 2xl:text-3xl">
+              Follow Akash
+            </h2>
           </div>
           <div class="flex flex-col pt-2">
             <a
               href="https://github.com/akash-network"
-              class="border-y py-2 text-lg transition-all hover:text-primary 2xl:text-xl"
+              class="border-y py-1 transition-all hover:text-primary md:py-2 md:text-lg 2xl:text-xl"
             >
               Akash Github
             </a>
             <a
               href="https://twitter.com/akashnet_"
-              class="border-t py-2 text-lg transition-all hover:text-primary 2xl:text-xl"
+              class="border-t py-1 transition-all hover:text-primary md:py-2 md:text-lg 2xl:text-xl"
             >
               Akash on "X"
             </a>
             <a
               href="https://discord.com/invite/akash"
-              class="border-t py-2 text-lg transition-all hover:text-primary 2xl:text-xl"
+              class="border-t py-1 transition-all hover:text-primary md:py-2 md:text-lg 2xl:text-xl"
             >
               Akash Discord
             </a>
             <a
               href="https://www.youtube.com/c/AkashNetwork"
-              class="border-y py-2 text-lg transition-all hover:text-primary 2xl:text-xl"
+              class="border-y py-1 transition-all hover:text-primary md:py-2 md:text-lg 2xl:text-xl"
             >
               Akash Youtube
             </a>
           </div>
         </div>
         <div class="flex lg:justify-end">
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-1 md:gap-3">
             <ArrowDownLeft className="size-10 2xl:size-16" />
-            <h2 class="text-3xl font-semibold !leading-[1.2] 2xl:text-5xl">
+            <h2
+              class="text-2xl font-semibold !leading-[1.2] md:text-3xl 2xl:text-5xl"
+            >
               Stay in touch <br />
               about Akash<br /> Accelerate 2025. <br />
               Subscribe here!
@@ -65,6 +72,7 @@ import { ArrowDownLeft } from "lucide-react";
             <svg
               width="279"
               height="52"
+              class="w-[150px] md:w-[279px]"
               viewBox="0 0 279 52"
               fill="none"
               class="mt-2"
