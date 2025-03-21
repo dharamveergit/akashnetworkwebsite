@@ -123,3 +123,10 @@ jobs:
             echo "Merging newly created PR #$PR_NUMBER..."
             gh pr merge --auto --squash --delete-branch $PR_NUMBER
           fi
+
+      - name: Trigger Build
+        if: success()
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: spec-update
