@@ -4,15 +4,16 @@ import ButtonLink from "../ui/button-link.astro";
 ---
 
 <section
-  class="overflow-hidden border-b-2 pb-20 pt-10 dark:border-[#D9D9D9] md:overflow-visible"
+  class="overflow-hidden border-b-2 pb-10 pt-4 dark:border-[#D9D9D9] md:overflow-visible md:pb-20 md:pt-10"
 >
-  <div class="flex flex-col gap-10">
+  <div class="flex flex-col gap-6 md:gap-10">
     <div class="flex items-center gap-4">
-      <h2 class="text-2xl font-semibold lg:text-4xl 2xl:text-5xl">
+      <h2 class="text-3xl font-semibold lg:text-4xl 2xl:text-5xl">
         Speakers
       </h2><svg
         width="39"
         height="39"
+        class="hidden md:block"
         viewBox="0 0 39 39"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,12 +24,12 @@ import ButtonLink from "../ui/button-link.astro";
           fill="white"></path>
       </svg>
     </div>
-    <div class="grid grid-cols-2 gap-3 md:gap-5 lg:grid-cols-4">
-      <div class="flex flex-col gap-3">
+    <div class="grid grid-cols-2 gap-x-3 gap-y-8 md:gap-5 lg:grid-cols-4">
+      <div class="flex flex-col md:gap-3">
         <img
           src="/images/acc-2025/speakers/greg.png"
           alt="Speaker 1"
-          class="aspect-[16/13] w-full bg-[#363636] object-contain"
+          class="aspect-square w-full bg-[#363636] object-contain lg:aspect-[16/13]"
         />
         <div class="flex flex-col">
           <p class="text-xs font-medium text-foreground md:text-lg">
@@ -46,11 +47,11 @@ import ButtonLink from "../ui/button-link.astro";
         <img
           src="/images/acc-2025/speakers/empty.svg"
           alt="Speaker 2"
-          class="aspect-[16/13] w-full bg-[#363636]"
+          class="aspect-square w-full bg-[#363636] object-contain lg:aspect-[16/13]"
         />
         <!-- ticket -->
         <svg
-          class="absolute -left-[14%] top-[10%] z-[1] w-[170%] md:-top-[26%] md:w-[312px] lg:-left-[16%]"
+          class="absolute -left-[14%] -top-[44%] z-[1] w-[120%] md:-top-[26%] md:w-[312px] lg:-left-[16%]"
           width="312"
           height="244"
           viewBox="0 0 312 244"
@@ -157,10 +158,10 @@ import ButtonLink from "../ui/button-link.astro";
         <img
           src="/images/acc-2025/speakers/empty.svg"
           alt="Speaker 3"
-          class="aspect-[16/13] w-full bg-[#363636]"
+          class="aspect-square w-full bg-[#363636] object-contain lg:aspect-[16/13]"
         />
         <svg
-          class="absolute -left-[20%] top-[10%] z-[1] w-[130%] md:top-[35%] md:w-[281px]"
+          class="absolute -left-[10%] top-[20%] z-[1] w-[100%] md:-left-[20%] md:top-[35%] md:w-[281px]"
           viewBox="0 0 281 277"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -567,10 +568,10 @@ import ButtonLink from "../ui/button-link.astro";
         <img
           src="/images/acc-2025/speakers/empty.svg"
           alt="Speaker 1"
-          class="aspect-[16/13] w-full bg-[#363636]"
+          class="aspect-square w-full bg-[#363636] object-contain lg:aspect-[16/13]"
         />
         <svg
-          class="absolute -bottom-[30%] left-[20%] z-[1] w-[120%] md:bottom-[60%] md:left-[0%] md:w-[249px]"
+          class="absolute bottom-[10%] left-[15%] z-[1] w-[90%] md:bottom-[60%] md:left-[0%] md:w-[249px]"
           width="249"
           height="250"
           viewBox="0 0 249 250"
@@ -771,7 +772,7 @@ import ButtonLink from "../ui/button-link.astro";
       link="/akash-accelerate-2025"
       variant="primary"
       size="xl"
-      className="mt-10 flex w-full gap-1 font-medium 2xl:!px-5 2xl:!py-2 2xl:text-lg"
+      className="mt-5 flex w-full gap-1 font-medium md:mt-10 2xl:!px-5 2xl:!py-2 2xl:text-lg"
     >
       <ArrowUpCircle className="h-5 w-5 rotate-45" />
       Join as a Speaker
