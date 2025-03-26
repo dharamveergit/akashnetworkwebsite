@@ -3,6 +3,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import { ArrowUpCircle, Info } from "lucide-react";
 import { useState } from "react";
@@ -222,11 +223,12 @@ const DesktopTableGpu = ({
                         // href={`https://console.akash.network/rent-gpu?vendor=${model?.vendor}&gpu=${model?.model}&interface=${model?.interface}&vram=${model?.ram}`}
                         href="https://console.akash.network/new-deployment"
                         target="_blank"
-                        className={`flex items-center gap-1.5 rounded-md border px-2 py-[1px] font-medium text-[#71717A] shadow-sm transition-all duration-300 hover:border-black hover:bg-black hover:text-white dark:text-para md:px-2 lg:px-3 ${
+                        className={cn(
+                          "flex items-center gap-1.5 rounded-md border px-2 py-[1px] font-medium  shadow-sm transition-all duration-300 hover:border-black hover:bg-black hover:text-white  md:px-2 lg:px-3",
                           hoveredRowIndex === index
-                            ? "border-black bg-black text-white"
-                            : ""
-                        }`}
+                            ? "!border-black bg-black text-white "
+                            : "text-[#71717A] dark:text-para",
+                        )}
                       >
                         <p className="whitespace-nowrap text-xs font-medium text-inherit">
                           Rent Now
