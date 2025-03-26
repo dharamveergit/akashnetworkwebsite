@@ -1,7 +1,11 @@
+---
+import { subscribeLink } from "@/lib/constants";
+---
+
 <footer
   class="mb-20 flex flex-col justify-between gap-20 border-b-2 py-10 dark:border-[#D9D9D9] md:flex-row md:gap-10"
 >
-  <div class="flex flex-col gap-4">
+  <a href={subscribeLink} target="_blank" class="group flex flex-col gap-4">
     <svg
       width="65"
       height="65"
@@ -15,10 +19,12 @@
         d="M19.0909 20.8871L24.3576 20.8614V36.7129L43.6131 17.4573L47.4411 21.2853L28.1856 40.5408L44.0242 40.528L44.0113 45.8075L19.0909 45.8075L19.0909 20.8871Z"
         fill="white"></path>
     </svg>
-    <h2 class="text-3xl font-semibold !leading-[1.2] lg:text-4xl 2xl:text-5xl">
+    <h2
+      class="text-3xl font-semibold !leading-[1.2] group-hover:underline lg:text-4xl 2xl:text-5xl"
+    >
       Stay in touch about <br /> Akash Accelerate 2025.<br /> Subscribe here!
     </h2>
-  </div>
+  </a>
   <div class="flex flex-col gap-3 md:items-end md:text-right">
     <div class="flex items-center gap-1">
       <p
