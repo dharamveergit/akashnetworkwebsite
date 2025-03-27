@@ -160,7 +160,7 @@ export const Tables = ({
   return (
     <section
       className={clsx(
-        " mx-auto flex w-full !max-w-[917px] flex-col gap-0 md:gap-4  ",
+        " mx-auto flex w-full  !max-w-[1250px] flex-col gap-0 md:gap-4  ",
         subCom ? "" : "md:container",
       )}
     >

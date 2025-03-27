@@ -193,7 +193,7 @@ export default function Filter({
             </div>
           ))}
         </div>
-        <SpeakToExpert className="px-4" />
+        <SpeakToExpert className="!py-[7px] px-4" />
       </div>
 
       {/* Combined badges area */}
@@ -208,9 +208,9 @@ export default function Filter({
               return (
                 <div
                   key={`${item.value}-${filterValue}`}
-                  className="bg-lightGray border-darkGrayBorder inline-flex items-center rounded-full border px-3 py-1 text-xs dark:border-defaultBorder dark:bg-background2"
+                  className="inline-flex items-center rounded-full border border-darkGrayBorder bg-lightGray px-3 py-1 text-xs dark:border-defaultBorder dark:bg-background2"
                 >
-                  <span className="text-darkGrayText mr-1 font-medium dark:text-para">
+                  <span className="mr-1 font-medium text-darkGrayText dark:text-para">
                     {item.name}:
                   </span>
                   <span className="font-semibold text-foreground">
@@ -229,7 +229,7 @@ export default function Filter({
           {hasActiveFilters && (
             <button
               onClick={() => setFilters(defaultFilters)}
-              className="ml-auto text-xs text-primary hover:underline"
+              className="ml-auto text-xs  hover:underline"
             >
               Clear all
             </button>
