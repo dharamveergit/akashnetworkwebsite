@@ -280,7 +280,14 @@ const ExpandedGpu = () => {
               >
                 {prices[0][index]}
                 {index !== 0 && (
-                  <span className="hidden md:inline-flex">/hr</span>
+                  <span
+                    className={clsx(
+                      "inline-flex text-xs text-para md:text-xl md:text-white",
+                      item.selected && "text-white",
+                    )}
+                  >
+                    /hr
+                  </span>
                 )}
               </h4>
             </div>
@@ -302,7 +309,9 @@ const ExpandedGpu = () => {
                       key={i}
                       className={clsx(
                         " py-2.5 text-center text-sm font-semibold md:py-4 md:text-xl ",
-                        i === 1 ? " border-t !border-[#DC1D28]" : "border-t",
+                        i === 1
+                          ? " border-t !border-[rgb(220,29,40)]"
+                          : "border-t",
                         i === 1 && index !== 1
                           ? "bg-primary  text-white"
                           : "bg-background",
@@ -311,7 +320,14 @@ const ExpandedGpu = () => {
                     >
                       {item}
                       {i !== 0 && (
-                        <span className="hidden md:inline-flex">/hr</span>
+                        <span
+                          className={clsx(
+                            "inline-flex text-xs  md:text-xl",
+                            i === 1 ? "text-white" : "text-para md:text-white",
+                          )}
+                        >
+                          /hr
+                        </span>
                       )}
                     </h4>
                   ))}
