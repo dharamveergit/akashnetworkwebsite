@@ -367,7 +367,9 @@ export const Tables = ({
                     target="_blank"
                     className="inline-flex justify-center  gap-1.5 rounded-md bg-primary py-3  text-white  "
                   >
-                    <p className="text-sm font-medium text-inherit">Rent Now</p>
+                    <p className="text-sm font-medium text-inherit">
+                      Resdfjdshfjkdshfjkhdskfhknt Now
+                    </p>
                     <ArrowUpRightIcon className="w-[15px]" />
                   </a>
                   <TryAkashForm
