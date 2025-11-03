@@ -17,7 +17,7 @@ bannerImage: ./banner-image.png
 
 The Akash Community Contribution Program is one of Akash's newest initiatives to expand upon what a community can build together. Its core idea is simple: create a clear, rewarding pathway for everyday users to become high-impact contributors. The network has already proven the value of coordinated community labor through its Vanguards. These community members work across different time zones to provide faster, more comprehensive technical support than any individual could alone. That success raises an important question:
 
-> If a distributed group can outperform traditional models in support, can it also do so in software development?
+<div class="border-l-4 pl-3">If a distributed group can outperform traditional models in support, can it also do so in software development?</div>
 
 While the program will still help connect contributors to small, independent tasks when needed, the program's focus is on building complete, community-owned projects. This shifts the emphasis from one-off fixes to sustained collaboration, where contributors work together to create and maintain tools that strengthen the entire network.
 
