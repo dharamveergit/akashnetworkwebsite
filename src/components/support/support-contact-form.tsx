@@ -1,6 +1,6 @@
 import { PhoneInput } from "@/components/blackwell/phone-number-select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import * as z from "zod";
@@ -270,7 +270,10 @@ export function SupportContactForm() {
               name="firstname"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-foreground">First Name</FormLabel>
+                  <FormLabel className="text-foreground">
+                    First Name
+                    <span className="ml-1 text-primary">*</span>
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
                   </FormControl>
@@ -284,7 +287,10 @@ export function SupportContactForm() {
               name="lastname"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-foreground">Last Name</FormLabel>
+                  <FormLabel className="text-foreground">
+                    Last Name
+                    <span className="ml-1 text-primary">*</span>
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
                   </FormControl>
