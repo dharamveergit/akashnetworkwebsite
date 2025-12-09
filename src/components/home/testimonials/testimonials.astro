@@ -95,6 +95,6 @@ const { testimonialsSection } = Astro.props;
   </div>
 
   <div class="container">
-    <Swiper client:load testimonials={testimonialsSection.testimonials} />
+    <Swiper client:visible testimonials={testimonialsSection.testimonials} />
   </div>
 </section>

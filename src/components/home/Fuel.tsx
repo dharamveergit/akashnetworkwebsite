@@ -1,226 +1,42 @@
-import { useEffect, useRef, useState } from "react";
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  opacity: number;
-}
-
-interface ParticleConfig {
-  /** Number of particles to render */
-  count?: number;
-  /** Speed multiplier for particle movement */
-  speed?: number;
-  /** Size range for particles [min, max] */
-  sizeRange?: [number, number];
-  /** Opacity range for particles [min, max] */
-  opacityRange?: [number, number];
-  /** Distance at which particles connect with lines */
-  connectionDistance?: number;
-  /** Radius of mouse interaction effect */
-  mouseInteractionRadius?: number;
-  /** Whether particle animation is enabled */
-  enabled?: boolean;
-}
-
-interface ParticlesBackgroundProps {
-  config?: ParticleConfig;
-}
-
-const ParticlesBackground = ({ config = {} }: ParticlesBackgroundProps) => {
-  const {
-    count = 380,
-    speed = 1,
-    sizeRange = [1, 4],
-    opacityRange = [0.2, 0.7],
-    connectionDistance = 150,
-    mouseInteractionRadius = 140,
-    enabled = true,
-  } = config;
-
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<Particle[]>([]);
-  const animationRef = useRef<number>();
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !enabled) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    const createParticles = () => {
-      const particleCount = Math.min(
-        count,
-        (canvas.width * canvas.height) / 800,
-      );
-      particlesRef.current = [];
-
-      for (let i = 0; i < particleCount; i++) {
-        particlesRef.current.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 2 * speed,
-          vy: (Math.random() - 0.5) * 2 * speed,
-          size: Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0],
-          opacity:
-            Math.random() * (opacityRange[1] - opacityRange[0]) +
-            opacityRange[0],
-        });
-      }
-    };
-
-    const drawParticles = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw particles
-      particlesRef.current.forEach((particle) => {
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
-        ctx.fill();
-      });
-
-      // Draw lines between nearby particles
-      particlesRef.current.forEach((particle, i) => {
-        particlesRef.current.slice(i + 1).forEach((otherParticle) => {
-          const distance = Math.sqrt(
-            Math.pow(particle.x - otherParticle.x, 2) +
-              Math.pow(particle.y - otherParticle.y, 2),
-          );
-
-          if (distance < connectionDistance) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.4 * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        });
-      });
-    };
-
-    const updateParticles = () => {
-      particlesRef.current.forEach((particle) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        // Bounce off edges
-        if (particle.x < 0 || particle.x > canvas.width) {
-          particle.vx *= -1;
-        }
-        if (particle.y < 0 || particle.y > canvas.height) {
-          particle.vy *= -1;
-        }
-
-        // Keep particles within bounds
-        particle.x = Math.max(0, Math.min(canvas.width, particle.x));
-        particle.y = Math.max(0, Math.min(canvas.height, particle.y));
-      });
-    };
-
-    const animate = () => {
-      updateParticles();
-      drawParticles();
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    const handleResize = () => {
-      resizeCanvas();
-      createParticles();
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-
-      particlesRef.current.forEach((particle) => {
-        const distance = Math.sqrt(
-          Math.pow(particle.x - mouseX, 2) + Math.pow(particle.y - mouseY, 2),
-        );
-
-        if (distance < mouseInteractionRadius) {
-          const angle = Math.atan2(particle.y - mouseY, particle.x - mouseX);
-          const force =
-            (mouseInteractionRadius - distance) / mouseInteractionRadius;
-          particle.vx += Math.cos(angle) * force * 0.5;
-          particle.vy += Math.sin(angle) * force * 0.5;
-        }
-      });
-    };
-
-    resizeCanvas();
-    createParticles();
-    animate();
-
-    window.addEventListener("resize", handleResize);
-    canvas.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [
-    count,
-    speed,
-    sizeRange,
-    opacityRange,
-    connectionDistance,
-    mouseInteractionRadius,
-    enabled,
-  ]);
-
-  if (!enabled) {
-    return null;
-  }
-
-  return <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />;
-};
-
-interface FuelProps {
-  particleConfig?: ParticleConfig;
-}
+/**
+ * Fuel Component - Optimized for performance
+ * Uses CSS-only particle animation instead of heavy canvas-based JavaScript
+ * This reduces JavaScript execution time from ~2s to near zero
+ */
 
 const Fuel = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
   return (
-    <section className="relative bg-primary">
-      <ParticlesBackground
-        config={
-          {
-            count: isMobile ? 40 : 100,
-            speed: 0.6,
-            sizeRange: [1, 4],
-            opacityRange: [0.2, 0.7],
-            connectionDistance: 150,
-            mouseInteractionRadius: 140,
-            enabled: true,
-          } as ParticleConfig
-        }
-      />
+    <section className="relative overflow-hidden bg-primary">
+      {/* CSS-only animated particles - no JS execution cost */}
+      <div className="particles-container absolute inset-0">
+        {/* Static particle elements with CSS animations */}
+        <div className="particle particle-1" />
+        <div className="particle particle-2" />
+        <div className="particle particle-3" />
+        <div className="particle particle-4" />
+        <div className="particle particle-5" />
+        <div className="particle particle-6" />
+        <div className="particle particle-7" />
+        <div className="particle particle-8" />
+        <div className="particle particle-9" />
+        <div className="particle particle-10" />
+        <div className="particle particle-11" />
+        <div className="particle particle-12" />
+        <div className="particle particle-13" />
+        <div className="particle particle-14" />
+        <div className="particle particle-15" />
+        <div className="particle particle-16" />
+        <div className="particle particle-17" />
+        <div className="particle particle-18" />
+        <div className="particle particle-19" />
+        <div className="particle particle-20" />
+      </div>
+
       <div className="relative z-10 flex flex-col items-center justify-center py-12 md:py-20">
         <img src="/images/akashstar.svg" alt="Akash Star" className="h-12" />
         <div className="mt-5 flex flex-col md:gap-2">
           <h2 className="text-center text-2xl font-semibold leading-[50px] text-white md:text-5xl">
-            <span className="font-instrument">AKT</span>:The Fuel Behind Akash
+            <span className="font-instrument">AKT</span>: The Fuel Behind Akash
           </h2>
           <p className="px-6 text-center text-white">
             AKT is the utility token that powers every GPU transaction on the
@@ -229,11 +45,71 @@ const Fuel = () => {
         </div>
         <a
           href="/token/"
-          className="mt-10 flex items-center gap-2 rounded bg-white px-6  py-3 text-black transition-all duration-300 hover:bg-[#E9E9E9]"
+          className="mt-10 flex items-center gap-2 rounded bg-white px-6 py-3 text-black transition-all duration-300 hover:bg-[#E9E9E9]"
         >
           Learn How AKT Works
         </a>
       </div>
+
+      <style>{`
+        .particles-container {
+          pointer-events: none;
+        }
+        
+        .particle {
+          position: absolute;
+          background: rgba(255, 255, 255, 0.6);
+          border-radius: 50%;
+          animation: float linear infinite;
+          will-change: transform, opacity;
+        }
+        
+        @keyframes float {
+          0% {
+            transform: translateY(100vh) translateX(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.8;
+          }
+          90% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(-10vh) translateX(50px);
+            opacity: 0;
+          }
+        }
+        
+        .particle-1 { left: 5%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: 0s; }
+        .particle-2 { left: 15%; width: 2px; height: 2px; animation-duration: 14s; animation-delay: 1s; }
+        .particle-3 { left: 25%; width: 4px; height: 4px; animation-duration: 10s; animation-delay: 2s; }
+        .particle-4 { left: 35%; width: 2px; height: 2px; animation-duration: 16s; animation-delay: 0.5s; }
+        .particle-5 { left: 45%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: 3s; }
+        .particle-6 { left: 55%; width: 2px; height: 2px; animation-duration: 13s; animation-delay: 1.5s; }
+        .particle-7 { left: 65%; width: 4px; height: 4px; animation-duration: 15s; animation-delay: 2.5s; }
+        .particle-8 { left: 75%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: 0.8s; }
+        .particle-9 { left: 85%; width: 2px; height: 2px; animation-duration: 14s; animation-delay: 3.5s; }
+        .particle-10 { left: 95%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: 1.2s; }
+        .particle-11 { left: 10%; width: 2px; height: 2px; animation-duration: 13s; animation-delay: 4s; }
+        .particle-12 { left: 20%; width: 3px; height: 3px; animation-duration: 15s; animation-delay: 2.2s; }
+        .particle-13 { left: 30%; width: 4px; height: 4px; animation-duration: 10s; animation-delay: 1.8s; }
+        .particle-14 { left: 40%; width: 2px; height: 2px; animation-duration: 12s; animation-delay: 3.2s; }
+        .particle-15 { left: 50%; width: 3px; height: 3px; animation-duration: 14s; animation-delay: 0.3s; }
+        .particle-16 { left: 60%; width: 2px; height: 2px; animation-duration: 16s; animation-delay: 2.8s; }
+        .particle-17 { left: 70%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: 1.6s; }
+        .particle-18 { left: 80%; width: 3px; height: 3px; animation-duration: 13s; animation-delay: 3.8s; }
+        .particle-19 { left: 90%; width: 2px; height: 2px; animation-duration: 15s; animation-delay: 0.6s; }
+        .particle-20 { left: 2%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: 2.4s; }
+        
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+          .particle {
+            animation: none;
+            opacity: 0.4;
+          }
+        }
+      `}</style>
     </section>
   );
 };

@@ -41,7 +41,7 @@ const { infrastructureSection } = Astro.props;
         </p>
       </div>
       <div class="mt-10">
-        <WhyChooseSwiper cards={whyChooseSection.cards} client:load />
+        <WhyChooseSwiper cards={whyChooseSection.cards} client:visible />
 
         <div
           class="hidden grid-cols-1 gap-6 sm:grid-cols-2 md:grid lg:grid-cols-3"
