@@ -21,7 +21,7 @@ interface Props {
 
 const homepage = await getEntry("Homepage", "index");
 
-const { advert } = homepage.data;
+const { advert } = homepage?.data || {};
 
 const {
   title,
@@ -60,7 +60,7 @@ const pathname = Astro.url.pathname;
       //     </p>
       //   </a>
       // </div>
-      <NVIDIAB200SoonForm client:load externalButton />
+      <NVIDIAB200SoonForm client:visible externalButton />
     )
   }
 
