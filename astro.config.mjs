@@ -14,13 +14,17 @@ import { redirects } from "./src/utils/redirects";
 export default defineConfig({
   redirects: redirects,
   markdown: {
-    remarkPlugins: [remarkMath, normalizeMath, remarkDirective, mermaid, customAsidePlugin],
+    remarkPlugins: [
+      remarkMath,
+      normalizeMath,
+      remarkDirective,
+      mermaid,
+      customAsidePlugin,
+    ],
   },
   integrations: [
     tailwind(),
-    sitemap({
-      lastmod: new Date("2024-06-27"),
-    }),
+    sitemap({ lastmod: new Date("2024-06-27") }),
     react(),
     astroExpressiveCode({
       themes: ["light-plus", "dark-plus"],
@@ -38,4 +42,8 @@ export default defineConfig({
     mdx(),
   ],
   site: "https://akash.network",
+  vite: {
+    build: { cssCodeSplit: true, cssMinify: "lightningcss" },
+    css: { devSourcemap: false },
+  },
 });

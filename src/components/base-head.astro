@@ -34,11 +34,39 @@ const {
 <link
   href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
   rel="stylesheet"
+  media="print"
+  onload="this.media='all'; this.onload=null;"
 />
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
   rel="stylesheet"
+  media="print"
+  onload="this.media='all'; this.onload=null;"
 />
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
+<script is:inline>
+  // Polyfill for font loading onload - ensures fonts load even if onload doesn't fire
+  (function() {
+    const fontLinks = document.querySelectorAll('link[rel="stylesheet"][media="print"]');
+    fontLinks.forEach(function(link) {
+      // Fallback: if onload hasn't fired after 3s, force media change
+      setTimeout(function() {
+        if (link.media === 'print') {
+          link.media = 'all';
+        }
+      }, 3000);
+    });
+  })();
+</script>
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 

@@ -389,5 +389,51 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
       async
       src="https://pxl.growth-channel.net/s/8d425860-cf3c-49cf-a459-069a7dc7b1f8"
     ></script>
+    <script is:inline>
+      /**
+       * Defer non-critical CSS to improve LCP and reduce render blocking
+       * Uses media="print" technique to load CSS asynchronously
+       */
+      (function () {
+        // Run immediately to catch stylesheets before they block rendering
+        const deferNonCriticalCSS = () => {
+          const stylesheets = document.querySelectorAll(
+            'link[rel="stylesheet"]:not([data-critical]):not([media="print"])'
+          );
+
+          stylesheets.forEach((link, index) => {
+            // Skip first stylesheet (usually critical/globals.css)
+            if (index === 0) {
+              link.setAttribute("data-critical", "true");
+              return;
+            }
+
+            // Defer remaining stylesheets
+            const originalMedia = link.media || "all";
+            link.media = "print";
+            link.setAttribute(
+              "data-onload",
+              'this.media="' + originalMedia + '"'
+            );
+
+            link.onload = function () {
+              this.media = originalMedia;
+            };
+
+            // Fallback for browsers that may not fire onload properly
+            link.addEventListener("load", function () {
+              this.media = originalMedia;
+            });
+          });
+        };
+
+        // Execute immediately if DOM is ready, otherwise wait
+        if (document.head) {
+          deferNonCriticalCSS();
+        } else {
+          document.addEventListener("DOMContentLoaded", deferNonCriticalCSS);
+        }
+      })();
+    </script>
   </body>
 </html>
