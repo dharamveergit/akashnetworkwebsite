@@ -25,12 +25,32 @@ const {
 <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- HubSpot Form Script -->
-<script src="https://js.hsforms.net/forms/embed/47519938.js" defer></script>
-
-<!-- Font preloads -->
+<!-- DNS Prefetch & Preconnect for critical resources -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- HubSpot Form Script - Deferred to not block rendering -->
+<script src="https://js.hsforms.net/forms/embed/47519938.js" defer></script>
+
+<!-- Font preloads - Critical font files for above-the-fold content -->
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="preload"
+  href="https://fonts.gstatic.com/s/instrumentserif/v1/a8uDq1gKzN_13VzyH7G7kzN4tU1rYjQ-P2oBqM.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin="anonymous"
+/>
+
+<!-- Font stylesheets - Load asynchronously -->
 <link
   href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
   rel="stylesheet"
@@ -55,13 +75,15 @@ const {
 </noscript>
 <script is:inline>
   // Polyfill for font loading onload - ensures fonts load even if onload doesn't fire
-  (function() {
-    const fontLinks = document.querySelectorAll('link[rel="stylesheet"][media="print"]');
-    fontLinks.forEach(function(link) {
+  (function () {
+    const fontLinks = document.querySelectorAll(
+      'link[rel="stylesheet"][media="print"]'
+    );
+    fontLinks.forEach(function (link) {
       // Fallback: if onload hasn't fired after 3s, force media change
-      setTimeout(function() {
-        if (link.media === 'print') {
-          link.media = 'all';
+      setTimeout(function () {
+        if (link.media === "print") {
+          link.media = "all";
         }
       }, 3000);
     });
@@ -98,31 +120,49 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Facebook Pixel Code -->
+<!-- Facebook Pixel Code - Deferred to not block rendering -->
 <script is:inline>
-  !(function (f, b, e, v, n, t, s) {
-    if (f.fbq) return;
-    n = f.fbq = function () {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+  // Load Facebook Pixel after page is interactive
+  (function () {
+    const loadFacebookPixel = () => {
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "654184647412382");
+      fbq("track", "PageView");
     };
-    if (!f._fbq) f._fbq = n;
-    n.push = n;
-    n.loaded = !0;
-    n.version = "2.0";
-    n.queue = [];
-    t = b.createElement(e);
-    t.async = !0;
-    t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s);
-  })(
-    window,
-    document,
-    "script",
-    "https://connect.facebook.net/en_US/fbevents.js"
-  );
-  fbq("init", "654184647412382");
-  fbq("track", "PageView");
+
+    // Load when page is interactive or after delay
+    if (document.readyState === "complete") {
+      loadFacebookPixel();
+    } else if (document.readyState === "interactive") {
+      setTimeout(loadFacebookPixel, 1000);
+    } else {
+      window.addEventListener("load", () =>
+        setTimeout(loadFacebookPixel, 1000)
+      );
+    }
+  })();
 </script>
 <noscript>
   <img
@@ -134,23 +174,37 @@ const {
 </noscript>
 <!-- End Facebook Pixel Code -->
 
-<!-- Twitter conversion tracking base code -->
+<!-- Twitter conversion tracking base code - Deferred to not block rendering -->
 <script is:inline>
-  !(function (e, t, n, s, u, a) {
-    e.twq ||
-      ((s = e.twq =
-        function () {
-          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-        }),
-      (s.version = "1.1"),
-      (s.queue = []),
-      (u = t.createElement(n)),
-      (u.async = !0),
-      (u.src = "https://static.ads-twitter.com/uwt.js"),
-      (a = t.getElementsByTagName(n)[0]),
-      a.parentNode.insertBefore(u, a));
-  })(window, document, "script");
-  twq("config", "o2glx");
+  // Load Twitter pixel after page is interactive
+  (function () {
+    const loadTwitterPixel = () => {
+      !(function (e, t, n, s, u, a) {
+        e.twq ||
+          ((s = e.twq =
+            function () {
+              s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+            }),
+          (s.version = "1.1"),
+          (s.queue = []),
+          (u = t.createElement(n)),
+          (u.async = !0),
+          (u.src = "https://static.ads-twitter.com/uwt.js"),
+          (a = t.getElementsByTagName(n)[0]),
+          a.parentNode.insertBefore(u, a));
+      })(window, document, "script");
+      twq("config", "o2glx");
+    };
+
+    // Load when page is interactive or after delay
+    if (document.readyState === "complete") {
+      loadTwitterPixel();
+    } else if (document.readyState === "interactive") {
+      setTimeout(loadTwitterPixel, 1500);
+    } else {
+      window.addEventListener("load", () => setTimeout(loadTwitterPixel, 1500));
+    }
+  })();
 </script>
 <!-- End Twitter conversion tracking base code -->
 

@@ -41,11 +41,153 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
   data-theme={htmlDataTheme}
 >
   <head>
+    <!-- Critical CSS inline for instant rendering -->
+    <style is:inline>
+      /* Critical above-the-fold styles */
+      html {
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+      }
+      body {
+        margin: 0;
+        background-color: #fff;
+        color: #1a1a1a;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .dark body {
+        background-color: #1c1c1c;
+        color: #ededed;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      [data-critical] {
+        display: block;
+      }
+    </style>
+    <script is:inline>
+      /**
+       * CRITICAL: Defer non-critical CSS - Must run first before any stylesheets
+       * This prevents render-blocking by converting non-critical CSS to async loading
+       */
+      (function () {
+        const deferStylesheet = (link) => {
+          if (
+            link.dataset.asyncLoaded ||
+            link.dataset.critical ||
+            link.media === "print"
+          ) {
+            return;
+          }
+
+          // Mark first stylesheet as critical (usually globals.css)
+          if (
+            !document.querySelector('link[rel="stylesheet"][data-critical]')
+          ) {
+            link.setAttribute("data-critical", "true");
+            return;
+          }
+
+          // Defer all other stylesheets using print media technique
+          const originalMedia = link.media || "all";
+          link.media = "print";
+          link.setAttribute("data-async-loaded", "true");
+
+          const activateStylesheet = () => {
+            link.media = originalMedia;
+          };
+
+          link.addEventListener("load", activateStylesheet);
+          link.addEventListener("error", activateStylesheet);
+          setTimeout(activateStylesheet, 3000); // Fallback timeout
+        };
+
+        // Process existing stylesheets immediately
+        if (document.head) {
+          document
+            .querySelectorAll('link[rel="stylesheet"]')
+            .forEach(deferStylesheet);
+        }
+
+        // Watch for dynamically added stylesheets
+        let observer = null;
+
+        const startObserver = () => {
+          if (document.head && !observer) {
+            observer = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                  if (
+                    node.nodeName === "LINK" &&
+                    node.rel === "stylesheet" &&
+                    !node.dataset.asyncLoaded
+                  ) {
+                    deferStylesheet(node);
+                  }
+                });
+              });
+            });
+
+            observer.observe(document.head, {
+              childList: true,
+              subtree: true,
+            });
+
+            // Also check existing stylesheets
+            document
+              .querySelectorAll('link[rel="stylesheet"]')
+              .forEach(deferStylesheet);
+
+            // Cleanup on pagehide for bfcache compatibility
+            window.addEventListener(
+              "pagehide",
+              () => {
+                if (observer) {
+                  observer.disconnect();
+                  observer = null;
+                }
+              },
+              { once: true }
+            );
+          }
+        };
+
+        if (document.head) {
+          startObserver();
+        } else {
+          // Wait for head, checking frequently
+          const checkHead = setInterval(() => {
+            if (document.head) {
+              clearInterval(checkHead);
+              startObserver();
+            }
+          }, 1);
+        }
+
+        // Handle bfcache restoration
+        window.addEventListener("pageshow", (event) => {
+          if (event.persisted) {
+            // Page was restored from bfcache, restart observer if needed
+            if (!observer && document.head) {
+              startObserver();
+            }
+          }
+        });
+      })();
+    </script>
+    <!-- Google Analytics - Deferred to not block rendering -->
     <script
       is:inline
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-LFRGN2J2RV"></script>
     <script is:inline>
+      // Critical theme initialization - runs immediately
       const doc = document.documentElement;
       if (doc.dataset.onlyDark === "true") {
         doc.classList.add("dark");
@@ -56,16 +198,26 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
       }
     </script>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      // Google Analytics - Deferred until after initial render
+      (function () {
+        const initGA = () => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "G-LFRGN2J2RV");
+        };
 
-      gtag("config", "G-LFRGN2J2RV");
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initGA);
+        } else {
+          setTimeout(initGA, 0);
+        }
+      })();
     </script>
 
-    <!-- Start of HubSpot Embed Code -->
+    <!-- Start of HubSpot Embed Code - Deferred -->
     <script
       is:inline
       type="text/javascript"
@@ -75,17 +227,29 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
       src="//js.hs-scripts.com/47519938.js"
     ></script><!-- End of HubSpot Embed Code -->
 
+    <!-- Google Tag Manager - Deferred to not block rendering -->
     <script is:inline>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-573RDG5H");
+      // GTM - Deferred until after initial render
+      (function () {
+        const initGTM = () => {
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, "script", "dataLayer", "GTM-573RDG5H");
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initGTM);
+        } else {
+          setTimeout(initGTM, 0);
+        }
+      })();
     </script>
 
     <BaseHead
@@ -94,46 +258,61 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
       image={image}
       noIndex={noIndex}
     />
+    <!-- MathJax - Deferred, not critical for initial render -->
     <script is:inline>
-      const queueMathTypeset = () => {
-        if (window.MathJax?.typesetPromise) {
-          window.MathJax.typesetClear?.();
-          window.MathJax.typesetPromise();
+      // MathJax - Deferred until after initial render
+      (function () {
+        const initMathJax = () => {
+          const queueMathTypeset = () => {
+            if (window.MathJax?.typesetPromise) {
+              window.MathJax.typesetClear?.();
+              window.MathJax.typesetPromise();
+            }
+          };
+
+          window.MathJax = {
+            tex: {
+              inlineMath: [
+                ["$", "$"],
+                ["\\(", "\\)"],
+              ],
+              displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+              ],
+              processEscapes: true,
+            },
+            options: {
+              skipHtmlTags: [
+                "script",
+                "noscript",
+                "style",
+                "textarea",
+                "pre",
+                "code",
+              ],
+            },
+            startup: {
+              ready: () => {
+                const { MathJax } = window;
+                MathJax.startup.defaultReady();
+                queueMathTypeset();
+              },
+            },
+          };
+
+          document.addEventListener("astro:after-swap", queueMathTypeset);
+        };
+
+        // Load MathJax after page is interactive
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(initMathJax, 100);
+          });
+        } else {
+          setTimeout(initMathJax, 100);
         }
-      };
-
-      window.MathJax = {
-        tex: {
-          inlineMath: [
-            ["$", "$"],
-            ["\\(", "\\)"],
-          ],
-          displayMath: [
-            ["$$", "$$"],
-            ["\\[", "\\]"],
-          ],
-          processEscapes: true,
-        },
-        options: {
-          skipHtmlTags: [
-            "script",
-            "noscript",
-            "style",
-            "textarea",
-            "pre",
-            "code",
-          ],
-        },
-        startup: {
-          ready: () => {
-            const { MathJax } = window;
-            MathJax.startup.defaultReady();
-            queueMathTypeset();
-          },
-        },
-      };
-
-      document.addEventListener("astro:after-swap", queueMathTypeset);
+      })();
     </script>
     <script
       defer
@@ -193,8 +372,28 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
 
       const applyTheme = () => setTheme(getTheme());
 
-      window.addEventListener("DOMContentLoaded", applyTheme);
+      // Apply theme on load and bfcache restore
+      const initTheme = () => {
+        applyTheme();
+      };
+
+      // Handle initial load and bfcache restoration
+      if (document.readyState === "loading") {
+        window.addEventListener("DOMContentLoaded", initTheme);
+      } else {
+        initTheme();
+      }
+
+      // Handle Astro view transitions
       document.addEventListener("astro:after-swap", applyTheme);
+
+      // Handle bfcache restoration
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          // Page restored from bfcache, reapply theme
+          applyTheme();
+        }
+      });
 
       const handleHeaderToggleClick = () => {
         if (onlyDark) return;
@@ -321,8 +520,8 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
         renderDiagrams(graphs);
       }
 
-      // Watch for theme changes in localStorage
-      window.addEventListener("storage", (e: StorageEvent) => {
+      // Watch for theme changes in localStorage (bfcache-friendly)
+      const handleStorageChange = (e: StorageEvent) => {
         if (e.key === "theme") {
           const graphs = document.getElementsByClassName("mermaid");
           if (graphs.length > 0) {
@@ -330,28 +529,68 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
             renderDiagrams(graphs, nextTheme);
           }
         }
+      };
+
+      window.addEventListener("storage", handleStorageChange);
+
+      // Cleanup on pagehide for bfcache
+      window.addEventListener(
+        "pagehide",
+        () => {
+          window.removeEventListener("storage", handleStorageChange);
+        },
+        { once: true }
+      );
+
+      // Re-attach on bfcache restore
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          window.addEventListener("storage", handleStorageChange);
+        }
       });
 
-      // Watch for system theme changes
+      // Watch for system theme changes (bfcache-friendly)
       const darkModeMediaQuery = window.matchMedia(
         "(prefers-color-scheme: dark)"
       );
-      darkModeMediaQuery.addEventListener(
-        "change",
-        (e: MediaQueryListEvent) => {
-          if (!localStorage.getItem("theme")) {
-            const graphs = document.getElementsByClassName("mermaid");
-            if (graphs.length > 0) {
-              const nextTheme = onlyDark
+
+      const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+        if (!localStorage.getItem("theme")) {
+          const graphs = document.getElementsByClassName("mermaid");
+          if (graphs.length > 0) {
+            const nextTheme = onlyDark
+              ? "dark"
+              : e.matches
                 ? "dark"
-                : e.matches
-                  ? "dark"
-                  : "neutral";
-              renderDiagrams(graphs, nextTheme);
-            }
+                : "neutral";
+            renderDiagrams(graphs, nextTheme);
           }
         }
+      };
+
+      darkModeMediaQuery.addEventListener("change", handleSystemThemeChange);
+
+      // Cleanup on pagehide for bfcache
+      window.addEventListener(
+        "pagehide",
+        () => {
+          darkModeMediaQuery.removeEventListener(
+            "change",
+            handleSystemThemeChange
+          );
+        },
+        { once: true }
       );
+
+      // Re-attach on bfcache restore
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          darkModeMediaQuery.addEventListener(
+            "change",
+            handleSystemThemeChange
+          );
+        }
+      });
 
       // Function to handle manual theme changes
       function updateMermaidTheme(newTheme: Theme): void {
@@ -366,74 +605,57 @@ const htmlDataTheme = onlyDark ? "dark-plus" : undefined;
       (window as any).updateMermaidTheme = updateMermaidTheme;
 
       // Add a mutation observer to watch for theme attribute changes on body or html
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (
-            mutation.attributeName === "data-theme" ||
-            mutation.attributeName === "class"
-          ) {
-            const graphs = document.getElementsByClassName("mermaid");
-            if (graphs.length > 0) {
-              renderDiagrams(graphs, getTheme());
-            }
-          }
-        });
-      });
+      let mermaidObserver: MutationObserver | null = null;
 
-      // Start observing the document with the configured parameters
-      observer.observe(document.documentElement, { attributes: true });
-      observer.observe(document.body, { attributes: true });
+      const startMermaidObserver = () => {
+        if (!mermaidObserver) {
+          mermaidObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (
+                mutation.attributeName === "data-theme" ||
+                mutation.attributeName === "class"
+              ) {
+                const graphs = document.getElementsByClassName("mermaid");
+                if (graphs.length > 0) {
+                  renderDiagrams(graphs, getTheme());
+                }
+              }
+            });
+          });
+
+          // Start observing the document with the configured parameters
+          mermaidObserver.observe(document.documentElement, {
+            attributes: true,
+          });
+          mermaidObserver.observe(document.body, { attributes: true });
+
+          // Cleanup on pagehide for bfcache
+          window.addEventListener(
+            "pagehide",
+            () => {
+              if (mermaidObserver) {
+                mermaidObserver.disconnect();
+                mermaidObserver = null;
+              }
+            },
+            { once: true }
+          );
+        }
+      };
+
+      startMermaidObserver();
+
+      // Re-attach on bfcache restore
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          startMermaidObserver();
+        }
+      });
     </script>
     <script
       is:inline
       async
       src="https://pxl.growth-channel.net/s/8d425860-cf3c-49cf-a459-069a7dc7b1f8"
     ></script>
-    <script is:inline>
-      /**
-       * Defer non-critical CSS to improve LCP and reduce render blocking
-       * Uses media="print" technique to load CSS asynchronously
-       */
-      (function () {
-        // Run immediately to catch stylesheets before they block rendering
-        const deferNonCriticalCSS = () => {
-          const stylesheets = document.querySelectorAll(
-            'link[rel="stylesheet"]:not([data-critical]):not([media="print"])'
-          );
-
-          stylesheets.forEach((link, index) => {
-            // Skip first stylesheet (usually critical/globals.css)
-            if (index === 0) {
-              link.setAttribute("data-critical", "true");
-              return;
-            }
-
-            // Defer remaining stylesheets
-            const originalMedia = link.media || "all";
-            link.media = "print";
-            link.setAttribute(
-              "data-onload",
-              'this.media="' + originalMedia + '"'
-            );
-
-            link.onload = function () {
-              this.media = originalMedia;
-            };
-
-            // Fallback for browsers that may not fire onload properly
-            link.addEventListener("load", function () {
-              this.media = originalMedia;
-            });
-          });
-        };
-
-        // Execute immediately if DOM is ready, otherwise wait
-        if (document.head) {
-          deferNonCriticalCSS();
-        } else {
-          document.addEventListener("DOMContentLoaded", deferNonCriticalCSS);
-        }
-      })();
-    </script>
   </body>
 </html>

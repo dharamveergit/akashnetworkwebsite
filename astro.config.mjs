@@ -45,7 +45,29 @@ export default defineConfig({
   vite: {
     build: {
       cssCodeSplit: true,
-      // Uses default esbuild minification (faster and doesn't require extra dependencies)
+      minify: "esbuild", // Explicitly enable esbuild minification for JS
+      target: "esnext", // Use modern JS targets to reduce polyfills
+      // Optimize chunk splitting for better caching
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            // Split large vendor libraries into separate chunks
+            if (id.includes("node_modules")) {
+              if (id.includes("lucide-react")) {
+                return "vendor-lucide";
+              }
+              if (id.includes("react-phone-number-input")) {
+                return "vendor-phone";
+              }
+              if (id.includes("react") || id.includes("react-dom")) {
+                return "vendor-react";
+              }
+              // Group other node_modules
+              return "vendor";
+            }
+          },
+        },
+      },
     },
     css: {
       devSourcemap: false,
