@@ -43,7 +43,12 @@ export default defineConfig({
   ],
   site: "https://akash.network",
   vite: {
-    build: { cssCodeSplit: true, cssMinify: "lightningcss" },
-    css: { devSourcemap: false },
+    build: {
+      cssCodeSplit: true,
+      // Uses default esbuild minification (faster and doesn't require extra dependencies)
+    },
+    css: {
+      devSourcemap: false,
+    },
   },
 });
